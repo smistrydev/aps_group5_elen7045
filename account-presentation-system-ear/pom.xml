@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.wits.elen7045.group5</groupId>
+		<artifactId>account-presentation-system-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>account-presentation-system-ear</artifactId>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<version>6</version>
+					<generateApplicationXml>false</generateApplicationXml>
+					<modules>
+						<!-- WEB MODULES ! -->
+						<webModule>
+							<groupId>elen7045.group5.project</groupId>
+							<artifactId>AccountPresentationSystemWeb</artifactId>
+							<bundleFileName>AccountPresentationWeb.war</bundleFileName>
+						</webModule>
+						<!-- EJB MODULES ! -->
+						<ejbModule>
+							<groupId>elen7045.group5.project</groupId>
+							<artifactId>AccountPresentationSystemEJB</artifactId>
+							<bundleFileName>AccountPresentationSystemEJB.jar</bundleFileName>
+						</ejbModule>
+						<!-- JAR MODULES ! -->
+						<!--<jarModule> <groupId>elen7045.group5.project</groupId> <artifactId>AJarModule</artifactId> 
+							<bundleFileName>AJarModule.jar</bundleFileName> </jarModule> -->
+					</modules>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-ear-plugin
+										</artifactId>
+										<versionRange>[2.7,)</versionRange>
+										<goals>
+											<goal>
+												generate-application-xml
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<properties>
+		<maven.ear.final.name>AccountPresentationSystem.ear</maven.ear.final.name>
+	</properties>
+
+</project>
