@@ -93,7 +93,7 @@ CREATE TABLE `credit_card_provider` (
   `minimum_amount_due` datetime DEFAULT NULL,
   `credit_available` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`credit_card_provider_id`),
-  KEY `fk__idx` (`statement_id`),
+  KEY `fk_credit_card_provider_statement_statement_id_idx` (`statement_id`),
   CONSTRAINT `fk_credit_card_provider_statement_statement_id` FOREIGN KEY (`statement_id`) REFERENCES `statement` (`statement_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -149,7 +149,7 @@ CREATE TABLE `maintance_window` (
   `month` varchar(100) DEFAULT NULL,
   `billing_company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`maintance_id`),
-  KEY `fk_ds_idx` (`billing_company_id`),
+  KEY `fk_maintance_window_billing_company_billing_company_id_idx` (`billing_company_id`),
   CONSTRAINT `fk_maintance_window_billing_company_billing_company_id` FOREIGN KEY (`billing_company_id`) REFERENCES `billing_company` (`billing_company_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -183,7 +183,7 @@ CREATE TABLE `municipal_provider` (
   `sewerage_charges` decimal(10,2) DEFAULT NULL,
   `refuse_charges` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`municipality_id`),
-  KEY `fk_municipal_provider_statement_statement_id_idx` (`statement_id`),
+  KEY `fk_municipal_provider_statement_id_idx` (`statement_id`),
   CONSTRAINT `fk_municipal_provider_statement_statement_id` FOREIGN KEY (`statement_id`) REFERENCES `statement` (`statement_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -236,7 +236,7 @@ CREATE TABLE `scrape_data` (
   `customer_id` int(11) DEFAULT NULL,
   `xml_result` text,
   PRIMARY KEY (`scrape_data_id`),
-  KEY `fk_scrape_data__idx` (`statement_id`),
+  KEY `fk_scrape_data_statement_statement_id_idx` (`statement_id`),
   CONSTRAINT `fk_scrape_data_statement_statement_id` FOREIGN KEY (`statement_id`) REFERENCES `statement` (`statement_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -277,7 +277,7 @@ CREATE TABLE `statement` (
   `vat_amount` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`statement_id`),
   KEY `fk_statement_statement_provider_statement_provider_id_idx` (`statement_provider_id`),
-  KEY `fk_statement_account__idx` (`account_id`),
+  KEY `fk_statement_account_account_id_idx` (`account_id`),
   CONSTRAINT `fk_statement_account_account_id` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_statement_statement_provider_statement_provider_id` FOREIGN KEY (`statement_provider_id`) REFERENCES `statement_provider` (`statement_provider_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -355,5 +355,6 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-22 17:54:16
+-- Dump completed on 2014-06-22 19:56:54
+
 grant all on `aps`.* to 'aps'@'localhost' identified by 'aps';
