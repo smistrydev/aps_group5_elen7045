@@ -2,19 +2,14 @@
 <html>
 	<head>
 		<title>Account Presentation System</title>
-		<%= render("/layouts/shim") %>
-        <%= stylesheet_link_tag    "bootstrapImport", media: "all" %>
-        <%= stylesheet_link_tag    "custom", media: "all" %>
-        <%= stylesheet_link_tag    "sitewide/tabSlideOut", media: "all" %>
-  		<%= javascript_include_tag "application" %>
-        <%= javascript_include_tag "sitewide/tabSlideOut" %>
-        <%= javascript_include_tag "sitewide/jquery.tabSlideOut.v1.3" %>
-		<%= yield(:head) %>
-		<%= csrf_meta_tags %>
+		<jsp:include page="shim.jsp" flush="true"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/tabSlideOut.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.tabSlideOut.v1.3.js"></script>
 	</head>
 	<body>
 		<jsp:include page="header.jsp" flush="true"/>
-		
+		Hello...
 		<jsp:include page="footer.jsp" flush="true"/>
 		<!-- Pull-out menu -->
 		<div class="slide-out-div">

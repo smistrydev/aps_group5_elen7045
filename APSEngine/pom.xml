@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>APSEngine</artifactId>
-	
+	<version>0.0.1-SNAPSHOT</version>
 	<name>APSEngine</name>
 	<description>Business logic portion of the account presentation system</description>
 	<packaging>jar</packaging>
