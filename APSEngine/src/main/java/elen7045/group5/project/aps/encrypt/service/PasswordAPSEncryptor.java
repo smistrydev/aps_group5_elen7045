@@ -8,31 +8,39 @@ import org.jasypt.util.password.PasswordEncryptor;
  * 
  * @author Sanjay Mistry
  */
-public class PasswordAPSEncryptor implements APSEncryptor {
+public class PasswordAPSEncryptor implements APSEncryptor
+{
 
-	private PasswordEncryptor encryptor = new BasicPasswordEncryptor();
+	private PasswordEncryptor	encryptor	= new BasicPasswordEncryptor();
 
 	/**
 	 * Creates a new instance of <tt>PasswordAPSEncryptor</tt>
 	 */
-	public PasswordAPSEncryptor() {
+	public PasswordAPSEncryptor()
+	{
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.sanjay.test.encrypt.service.APSEncryptor#encrypt(java.lang.String)
+	 * @see
+	 * com.sanjay.test.encrypt.service.APSEncryptor#encrypt(java.lang.String)
 	 */
-	public String encrypt(String message) {
+	@Override
+	public String encrypt(String message)
+	{
 		return encryptor.encryptPassword(message);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.sanjay.test.encrypt.service.APSEncryptor#check(java.lang.String, java.lang.String)
+	 * @see com.sanjay.test.encrypt.service.APSEncryptor#check(java.lang.String,
+	 * java.lang.String)
 	 */
-	public boolean check(String plain, String encrypted) {
+	@Override
+	public boolean check(String plain, String encrypted)
+	{
 		return encryptor.checkPassword(plain, encrypted);
 	}
 

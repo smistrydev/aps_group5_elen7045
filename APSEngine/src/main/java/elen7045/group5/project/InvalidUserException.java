@@ -5,7 +5,7 @@ package elen7045.group5.project;
  */
 public class InvalidUserException extends Exception
 {
-	private static final long serialVersionUID = 113131L;
+	private static final long	serialVersionUID	= 113131L;
 
 	/**
 	 * InvalidUserException constructor.
@@ -14,17 +14,16 @@ public class InvalidUserException extends Exception
 	{
 		super();
 	}
-	
+
 	/**
 	 * InvalidUserException constructor.
-	 * @param s java.lang.String The exception encountered
+	 * 
+	 * @param s
+	 *            java.lang.String The exception encountered
 	 */
 	public InvalidUserException(String s)
 	{
 		super(s);
 	}
-	
-	
-	
-	
+
 }

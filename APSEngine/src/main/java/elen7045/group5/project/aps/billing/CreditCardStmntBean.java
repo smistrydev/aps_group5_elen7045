@@ -5,13 +5,13 @@ package elen7045.group5.project.aps.billing;
  */
 public class CreditCardStmntBean extends StatementBean
 {
-	private static final long serialVersionUID = 1L;
-	private String cardType; //maybe enum?
-	private float interestRate,
-					creditLimit,
-					creditAvailable,
-					minimumAmtDue;
-	
+	private static final long	serialVersionUID	= 1L;
+	private String				cardType;					// maybe enum?
+	private float				interestRate,
+								creditLimit,
+								creditAvailable,
+								minimumAmtDue;
+
 	/**
 	 * @return Returns the cardType
 	 */
@@ -19,13 +19,16 @@ public class CreditCardStmntBean extends StatementBean
 	{
 		return cardType;
 	}
+
 	/**
-	 * @param cardType - The cardType to set
+	 * @param cardType
+	 *            - The cardType to set
 	 */
 	public void setCardType(String cardType)
 	{
 		this.cardType = cardType;
 	}
+
 	/**
 	 * @return Returns the interestRate
 	 */
@@ -33,6 +36,7 @@ public class CreditCardStmntBean extends StatementBean
 	{
 		return interestRate;
 	}
+
 	/**
 	 * @return Returns the creditLimit
 	 */
@@ -40,6 +44,7 @@ public class CreditCardStmntBean extends StatementBean
 	{
 		return creditLimit;
 	}
+
 	/**
 	 * @return Returns the creditAvailable
 	 */
@@ -47,6 +52,7 @@ public class CreditCardStmntBean extends StatementBean
 	{
 		return creditAvailable;
 	}
+
 	/**
 	 * @return Returns the minimumAmtDue
 	 */
@@ -54,35 +60,41 @@ public class CreditCardStmntBean extends StatementBean
 	{
 		return minimumAmtDue;
 	}
+
 	/**
-	 * @param interestRate - The interestRate to set
+	 * @param interestRate
+	 *            - The interestRate to set
 	 */
 	public void setInterestRate(float interestRate)
 	{
 		this.interestRate = interestRate;
 	}
+
 	/**
-	 * @param creditLimit - The creditLimit to set
+	 * @param creditLimit
+	 *            - The creditLimit to set
 	 */
 	public void setCreditLimit(float creditLimit)
 	{
 		this.creditLimit = creditLimit;
 	}
+
 	/**
-	 * @param creditAvailable - The creditAvailable to set
+	 * @param creditAvailable
+	 *            - The creditAvailable to set
 	 */
 	public void setCreditAvailable(float creditAvailable)
 	{
 		this.creditAvailable = creditAvailable;
 	}
+
 	/**
-	 * @param minimumAmtDue - The minimumAmtDue to set
+	 * @param minimumAmtDue
+	 *            - The minimumAmtDue to set
 	 */
 	public void setMinimumAmtDue(float minimumAmtDue)
 	{
 		this.minimumAmtDue = minimumAmtDue;
 	}
-	
-	
 
 }

@@ -13,20 +13,23 @@ public enum EApplicationErrors
 	ERROR_PAGE_ENCOUNTERED(2006),
 	BROKEN_SCRIPT(2007),
 	ENCOUNTERED_UNHANDLED_DATA_CONDITION(2008);
-	
-	private int errorCode;
-	
+
+	private int	errorCode;
+
 	/**
 	 * Creates the ENUM with a specific error code
-	 * @param errorCode - Unique error code
+	 * 
+	 * @param errorCode
+	 *            - Unique error code
 	 */
 	private EApplicationErrors(int errCode)
 	{
 		this.errorCode = errCode;
 	}
-	
+
 	/**
 	 * Returns the code representing the error
+	 * 
 	 * @return Returns the code representing the error
 	 */
 	public int getErrorCode()

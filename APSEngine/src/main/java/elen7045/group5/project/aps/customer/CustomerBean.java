@@ -7,12 +7,13 @@ import java.io.Serializable;
  */
 public class CustomerBean implements Serializable
 {
-	private static final long serialVersionUID = 1L;
-	private int customerId;
-	private String customerEmail,
-					customerPassword,
-					customerName,
-					customerSurname;
+	private static final long	serialVersionUID	= 1L;
+	private int					customerId;
+	private String				customerEmail,
+								customerPassword,
+								customerName,
+								customerSurname;
+
 	/**
 	 * @return Returns the customerId
 	 */
@@ -20,6 +21,7 @@ public class CustomerBean implements Serializable
 	{
 		return customerId;
 	}
+
 	/**
 	 * @return Returns the customerEmail
 	 */
@@ -27,6 +29,7 @@ public class CustomerBean implements Serializable
 	{
 		return customerEmail;
 	}
+
 	/**
 	 * @return Returns the customerPassword
 	 */
@@ -34,6 +37,7 @@ public class CustomerBean implements Serializable
 	{
 		return customerPassword;
 	}
+
 	/**
 	 * @return Returns the customerName
 	 */
@@ -41,6 +45,7 @@ public class CustomerBean implements Serializable
 	{
 		return customerName;
 	}
+
 	/**
 	 * @return Returns the customerSurname
 	 */
@@ -48,36 +53,46 @@ public class CustomerBean implements Serializable
 	{
 		return customerSurname;
 	}
+
 	/**
-	 * @param customerId - The customerId to set
+	 * @param customerId
+	 *            - The customerId to set
 	 */
 	public void setCustomerId(int customerId)
 	{
 		this.customerId = customerId;
 	}
+
 	/**
-	 * @param customerEmail - The customerEmail to set
+	 * @param customerEmail
+	 *            - The customerEmail to set
 	 */
 	public void setCustomerEmail(String customerEmail)
 	{
 		this.customerEmail = customerEmail;
 	}
+
 	/**
-	 * @param customerPassword - The customerPassword to set
+	 * @param customerPassword
+	 *            - The customerPassword to set
 	 */
 	public void setCustomerPassword(String customerPassword)
 	{
 		this.customerPassword = customerPassword;
 	}
+
 	/**
-	 * @param customerName - The customerName to set
+	 * @param customerName
+	 *            - The customerName to set
 	 */
 	public void setCustomerName(String customerName)
 	{
 		this.customerName = customerName;
 	}
+
 	/**
-	 * @param customerSurname - The customerSurname to set
+	 * @param customerSurname
+	 *            - The customerSurname to set
 	 */
 	public void setCustomerSurname(String customerSurname)
 	{
