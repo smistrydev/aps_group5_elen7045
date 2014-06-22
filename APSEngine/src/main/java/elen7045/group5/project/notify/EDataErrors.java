@@ -1,8 +1,13 @@
 package elen7045.group5.project.notify;
-// User interface error codes
-public enum EUserInterfaceErrors {
-	INVALID_USER_NAME(001),
-	INVALID_USER_PASSWORD(002);
+
+public enum EDataErrors {
+	INCORRECT_TOTAL_DUE_CALCULATION(1001),
+	INCORRECT_VAT_CALCUALTION(1002),
+	INCORRECT_DATA_SCRAPPED(1003),
+	INCORRECT_STATEMENT_DATE(1004),
+	DATA_FAILS_INTEGRITY_CHECKING(1005),
+	INCORRECT_ACCOUNT_NUMBER(1006)
+	;
 		
 	
 	private int errorCode;
@@ -11,7 +16,7 @@ public enum EUserInterfaceErrors {
 	 * Creates the ENUM with a specific error code
 	 * @param errorCode - Unique error code
 	 */
-	private EUserInterfaceErrors(int errCode)
+	private EDataErrors(int errCode)
 	{
 		this.errorCode = errCode;
 	}
@@ -24,5 +29,8 @@ public enum EUserInterfaceErrors {
 	{
 		return errorCode;
 	}
+
+}
+
 
 }

@@ -1,8 +1,8 @@
 package elen7045.group5.project.notify;
-// User interface error codes
-public enum EUserInterfaceErrors {
-	INVALID_USER_NAME(001),
-	INVALID_USER_PASSWORD(002);
+
+public enum EScrapperSchedularErrors {
+	SCHEDULER_SCRAPPER_FAILED(3001),
+	SCHEDUKER_REACHED_MAXIMUM_RETRIES(3002);
 		
 	
 	private int errorCode;
@@ -11,7 +11,7 @@ public enum EUserInterfaceErrors {
 	 * Creates the ENUM with a specific error code
 	 * @param errorCode - Unique error code
 	 */
-	private EUserInterfaceErrors(int errCode)
+	private EScrapperSchedularErrors(int errCode)
 	{
 		this.errorCode = errCode;
 	}
@@ -24,5 +24,6 @@ public enum EUserInterfaceErrors {
 	{
 		return errorCode;
 	}
+
 
 }
