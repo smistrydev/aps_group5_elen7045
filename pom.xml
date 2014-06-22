@@ -21,9 +21,11 @@
 
 
 	<modules>
-		<module>account-presentation-system-web</module>
-		<module>account-presentation-system-ejb</module>
-		<module>account-presentation-system-ear</module>
+<!-- 		<module>account-presentation-system-web</module> -->
+<!-- 		<module>account-presentation-system-ejb</module> -->
+<!-- 		<module>account-presentation-system-ear</module> -->
+		<module>APSWeb</module>
+		<module>APSEngine</module>
 	</modules>
 
 	<build>
