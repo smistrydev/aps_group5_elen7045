@@ -1,0 +1,977 @@
+body {
+    background-color: #f2f4f4 !important;
+    font-family: Verdana, Arial !important;
+}
+
+.modal-backdrop .preloader {
+    background: url("../resources/global/images/loader.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 100px;
+    width: 100px;
+    margin: 200px auto auto;
+}
+
+nav {
+   padding-bottom:20px;
+}
+
+nav.hidden {
+    display:none;
+}
+
+#routingRulesGrid {
+    position: relative;
+    clear: both;
+}
+
+.ruleSchedule, .tableSchedule {
+    float: left;
+    margin-left: 4px;
+    position: relative;
+}
+
+.rulsetRow {
+    clear: both;
+    overflow:hidden;
+}
+
+.tableHeadRow {
+    clear: both;
+    margin-bottom: 16px;
+    color: #FFFFFF;
+    overflow:visible;
+}
+
+.edit .tableHeadRow {
+    padding-left: 35px;
+}
+
+.hover .edit-menu {
+    visibility: visible;
+}
+
+.edit-menu {
+    width:35px;
+    height: 21px;
+    float: left;
+    visibility: hidden;
+    margin-top:3px;
+}
+
+.edit-menu .icon {
+    background-position: 0px 0px;
+    height: 21px;
+    width: 21px;
+    background: url("../resources/global/images/metro-rr-sprite.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+
+}
+
+#alerts.editAlerts {
+    position: absolute;
+    left: 360px;
+    position: absolute;
+    z-index: 1500;
+}
+
+#ruleSetValidate {
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+#ruleSetValidate .btn-info {
+    font-size: 15px;
+
+}
+#ruleSetValidate .btn-info  .icon {
+    background: url("../resources/global/images/metro-rr-sprite.png") no-repeat scroll -110px -2px rgba(0, 0, 0, 0);
+    height: 21px;
+    width: 21px;
+    float:left;
+    margin-left:5px;
+    margin-top:2px;
+}
+
+
+.ruleHead {
+    width: 75px;
+    /*border: 1px solid #A3A3A3;*/
+    border-color: #A3A3A3;
+    border-style: solid;
+    border-width: 1px 1px 0px 1px;
+    background-color: #e0e0df;
+    margin-right: 5px;
+}
+
+.tableSchedule {
+    background-color: #233a74;
+    border: 1px solid #F2F4F4;
+}
+
+.tableHead {
+    width: 75px;
+    background-color: #233a74;
+    border: 1px solid #A3A3A3;
+    margin-right: 5px;
+}
+
+.tableHead.item {
+    height: 42px;
+    line-height: 42px;
+}
+
+.rule {
+    border-color: #A3A3A3;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.item {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.verticalLine {
+    font-size: 13px;
+    height: 94%;
+    /*left: 169px;*/
+    padding-left: 5px;
+    position: absolute;
+    top: 61px;
+}
+
+.verticalLine.current {
+    border-left: 4px solid #FF0000;
+    color: #FF0000;
+}
+
+.verticalLine.ruleset {
+    border-left: 4px solid #000000;
+    color: #000000;
+}
+
+/**
+.view #verticalLine {
+    left: 169px;
+}
+
+
+.edit #verticalLine {
+    left: 204px;
+}
+**/
+
+.verticalLine #time, .verticalLine .label {
+    bottom: 0;
+    position: absolute;
+    vertical-align: text-bottom;
+}
+
+.verticalLine .label {
+    /**
+    background: url("images/transpBlack10.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #A3A3A3;
+    padding-left: 2px;
+    padding-right: 2px;
+    line-height: 16px;
+    **/
+    cursor: pointer;
+    text-shadow: 1px 1px 1px #A3A3A3;
+}
+
+.label sup {
+    font-size: xx-small;
+    margin-left: 2px;
+    vertical-align: top;
+}
+
+.africa {
+    background-color: #3A6629;
+}
+
+.asia {
+    background-color: #213f99;
+}
+
+.europe {
+    background-color: #8B6914;
+}
+
+.americas {
+    background-color: #652c90;
+}
+
+.kenya {
+    background-color: #00a550;
+}
+
+/************ arrows *********************/
+
+.tableHead {
+    position: relative;
+}
+
+.tableHead:after {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #233A74 rgba(136, 183, 213, 0) rgba(136, 183, 213, 0);
+    border-image: none;
+    border-style: solid;
+    border-width: 10px;
+    content: " ";
+    height: 0;
+    left: -21px;
+    margin-left: -21px;
+    pointer-events: none;
+    position: relative;
+    top: 38px;
+    width: 0;
+}
+
+.manage .tableHead.name:after {
+    left: -36px;
+    margin-left: -12px;
+}
+
+.manage .tableHead.state:after {
+    left: -15px;
+    margin-left: -11px;
+}
+
+.manage .tableHead.date:after {
+    left: -29px;
+    margin-left: -18px;
+}
+
+.schedule .tableHead.name:after {
+    left: -63px;
+    margin-left: -12px;
+}
+
+/**
+.timeItem:after {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom: 10px solid #F2F4F4;
+    border-left: 10px solid #233A74;
+    content: " ";
+    display: inline-block;
+    height: 0;
+    left: -15px;
+    position: relative;
+    top: 1px;
+    width: 0;
+}
+**/
+
+.arrow:after {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-bottom: 10px solid #F2F4F4;
+    border-left: 10px solid #233A74;
+    content: " ";
+    display: block;
+    height: 0;
+    left: 0px;
+    position: relative;
+    top: 7px;
+    width: 0;
+}
+
+
+.timeItem, .timeItemHead {
+    border-right: 1px solid #F2F4F4;
+    border-top: 1px solid #F2F4F4;
+    float: left;
+    font-size: 11px;
+    height: 16px;
+    padding: 2px 0;
+    position: relative;
+    text-align: center;
+    width: 39px;
+}
+
+#routingRulesGrid .arrow:before, .arrow:after {
+    box-sizing: content-box !important;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+}
+
+/*
+*, *:before, *:after {
+    box-sizing: content-box !important;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+}
+*/
+
+#date-picker {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin: 3px 5px 3px 0;
+    float:left;
+}
+
+#ruleSetName {
+    margin-bottom:3px;
+}
+
+#ruleSetName.bg-info {
+    margin-top: 3px;
+    margin-left: 5px;
+    color: #757575;
+}
+
+#ruleSetName.bg-info p {
+    padding: 10px;
+    letter-spacing: 1px;
+}
+
+.container {
+    padding-left: 10px;
+}
+/*schedule styles */
+
+.schedule {
+    /*overflow: hidden;*/
+    width: 1220px;
+}
+
+.schedule #currentSchedule {
+    height: 391px;
+    overflow-y: auto;
+    float:left;
+    overflow-x:hidden;
+}
+
+.schedule #newSchedule {
+    height: 391px;
+    float: left;
+}
+
+.schedule .tableHead {
+    width: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
+}
+
+.schedule .ruleHead {
+    width: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    overflow: hidden;
+}
+
+.actionIcons {
+    overflow: auto;
+    width: 100px;
+    float:left;
+}
+
+.actionIcons .icon {
+    float: left;
+    height: 21px;
+    width: 21px;
+    background: url("../resources/global/images/metro-rr-sprite.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.actionIcons .icon.delete {
+    background-position: -110px -23px;
+}
+
+.actionIcons .icon.delete:hover {
+    background-position: -88px -23px;
+}
+
+.actionIcons .icon.preview {
+    background-position: -153px -23px;
+}
+
+.actionIcons .icon.preview:hover {
+    background-position: -131px -23px;
+}
+
+.actionIcons .icon.schedule {
+    background-position: -153px -2px;
+}
+
+.actionIcons .icon.schedule:hover {
+    background-position: -131px -2px;
+}
+
+.actionIcons .icon.copy {
+    background-position: -66px -2px;
+}
+
+.actionIcons .icon.copy:hover {
+    background-position: -44px -2px;
+}
+
+.actionIcons .icon.edit {
+    background-position: -22px -23px;
+}
+
+.actionIcons .icon.edit:hover {
+    background-position: 0px -23px;
+}
+
+.actionIcons .icon.validate {
+    background-position: -110px -2px;
+}
+
+.actionIcons .icon.validate:hover {
+    background-position: -88px -2px;
+}
+
+.actionIcons .icon.productionize {
+    background-position: -66px -23px;
+}
+
+.actionIcons .icon.productionize:hover {
+    background-position: -44px -23px;
+}
+
+.rulsetRow .actionIcons {
+    visibility: hidden;
+    padding-top:5px;
+}
+
+.rulsetRow.hover .actionIcons {
+    visibility: inherit;
+}
+
+iframe.preview {
+    height: 480px;
+    left: -105px;
+    margin: 10px;
+    overflow: hidden;
+    position: relative;
+    top: -45px;
+    transform: scale(0.80);
+    -webkit-transform: scale(0.80);
+    width: 1200px;
+    border-bottom: 1px solid #A3A3A3;
+}
+
+.modal-dialog {
+    left: 275px;
+    top: 30px;
+    width: 1060px;
+    position: absolute !important;
+}
+
+.previewModal button {
+    margin-bottom: 15px;
+    margin-right: 15px;
+    position: relative;
+    top: -85px;
+}
+
+.previewModal .modal-content {
+    height: 465px;
+    overflow: hidden;
+    width: 985px;
+}
+
+.unscheduleModal .modal-content {
+    height: 110px;
+    overflow: hidden;
+    width: 700px;
+}
+
+.unscheduleModal .modal-content .text {
+    border-bottom: 1px solid #A3A3A3;
+    padding:15px;
+}
+
+.unscheduleModal .modal-content .error {
+    color: #D9534F;
+    float: left;
+    padding: 20px;
+}
+
+
+.unscheduleModal .modal-content button {
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.schedule .rulsetRow {
+    width: 575px;
+}
+
+.schedule .rulsetRow.new {
+    overflow: visible;
+    width: 450px;
+}
+
+.schedule .btn-info, .schedule .btn-info:hover {
+    background-color: #E0E0DF;
+    border: 1px solid #A3A3A3;
+    color: #000000;
+}
+
+.schedule dropdown {
+    margin-top:0px;
+}
+
+.schedule .scheduleBtn {
+    margin-left: 5px;
+    margin-top: 34px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.schedule dropdown .btn-group {
+    margin: 0px;
+
+}
+
+.schedule dropdown .button-label {
+    font-family: verdana;
+    font-size: 11px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    width: 301px;
+}
+
+.schedule dropdown .dropdown-menu > li > a {
+    font-size: 11px;
+    padding-left: 15px;
+}
+
+.schedule dropdown .btn.dropdown-toggle {
+    padding: 3px;
+}
+
+.schedule #date-picker .input-group input {
+    padding: 3px;
+    font-family: verdana;
+    font-size: 11px;
+    width: 111px;
+}
+
+.schedule #date-picker .input-group .cal {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.schedule .open .dropdown-toggle.btn-info {
+    background-color: #E0E0DF;
+    border-color: #A3A3A3;
+    color: #000000;
+}
+
+.schedule .btn-info .caret {
+    border-bottom-color: #FFFFFF;
+    border-top-color: #000000;
+}
+
+.schedule #date-picker {
+    margin-top: 34px;
+    margin-left:0px;
+    float: left;
+    overflow: auto;
+}
+
+.manage .ruleHead.name, .schedule .ruleHead.name, .manage .tableHead.name, .schedule .tableHead.name  {
+    width: 300px;
+}
+
+/*manage styles */
+
+.manage .rulsetRow {
+     width:920px;
+}
+
+.manage .actionIcons {
+    padding-top:10px;
+}
+
+.manage #alerts {
+    left: 725px;
+    position: absolute;
+}
+
+.manage #rulesList {
+    height: 470px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.manage .rulsetRow .item {
+    height: 40px;
+    line-height: 40px;
+    padding-top:0px;
+}
+
+.manage .ruleHead.created, .manage .tableHead.created {
+    width: 220px;
+}
+
+.manage .ruleHead.date, .manage .tableHead.date {
+    width: 100px;
+}
+
+.manage .ruleHead.state, .manage .tableHead.state {
+    width: 130px;
+}
+
+/**edit row **/
+.editHead {
+    border-bottom: 1px solid #000000;
+    overflow: hidden;
+    width: 322px;
+    padding: 4px 0;
+}
+
+.editHead .title {
+    color: #000000;
+    float: left;
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: 100px;
+}
+
+.editSub, .editItem {
+    overflow: hidden;
+    width: 330px;
+    padding: 4px 0;
+}
+
+.editSub .title {
+    float: left;
+    width:100px;
+    font-size: 12px;
+}
+
+.editItem .input, .editItem .dropdown {
+    float:left;
+    width:100px;
+}
+
+.editItem .input input {
+    width: 80px;
+    font-size: 12px;
+}
+
+.editItem .dropdown select {
+    width: 82px;
+    font-size: 12px;
+}
+
+.editItem .dropdown select {
+    padding: 2px 0;
+}
+
+.actionBar {
+    border-top: 1px solid #000;
+    width: 320px;
+    padding: 5px 0;
+    overflow: hidden;
+}
+
+.actionBar .btn {
+    margin: 0 5px;
+}
+
+.actionBar .btn-sm {
+    padding: 3px 7px;
+}
+
+.editRuleSetRowModal {
+    /*position: relative;*/
+}
+
+.editRuleSetRowModal .modal-dialog {
+    width: 330px;
+}
+
+.editRuleSetRowModal .modal-dialog .modal-content {
+    padding: 0 5px;
+    color: #757575;
+}
+
+.editRuleSetRowModal #alerts {
+    position: absolute;
+    z-index: 1100;
+    top: 0px;
+    left:330px;
+    width:400px
+}
+
+.editRuleSetRowModal .delete {
+    width: 22px;
+    margin-right: 5px;
+}
+
+.editRuleSetRowModal .delete.icon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    background: url("../resources/global/images/edit-icons.png") no-repeat scroll 0px -3px rgba(0, 0, 0, 0);
+}
+
+.editRuleSetRowModal .delete.icon:hover {
+    width: 22px;
+    height: 22px;
+    background: url("../resources/global/images/edit-icons.png") no-repeat scroll -22px -3px rgba(0, 0, 0, 0);
+}
+
+.editRuleSetRowModal .add.icon {
+    width: 22px;
+    height: 22px;
+    margin-top: 3px;
+    cursor: pointer;
+    background: url("../resources/global/images/edit-icons.png") no-repeat scroll -43px -3px rgba(0, 0, 0, 0);
+}
+
+.editRuleSetRowModal .add.icon:hover {
+    width: 22px;
+    height: 22px;
+    background: url("../resources/global/images/edit-icons.png") no-repeat scroll -65px -3px rgba(0, 0, 0, 0);
+}
+
+
+/** copy ruleset modal*/
+.copyModal {
+    padding: 3px;
+    top: 30px;
+    background: #FFFF99;
+}
+
+.copyModal input textarea {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    display: block;
+    font-size: 14px;
+    height: 22px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+}
+
+.copyModal .modal-content {
+    height: 210px;
+    width: 450px;
+    padding:10px;
+}
+
+.copyModal .modal-content .text {
+    border-bottom: 1px solid #A3A3A3;
+    padding:15px;
+}
+
+.copyModal .modal-content .error {
+    color: #D9534F;
+    float: left;
+    padding: 0px;
+    font-size: 12px;
+    width: 315px;
+}
+
+.copyModal .ruleHead {
+    width: 90px;
+    border-color: #A3A3A3;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    background-color: #e0e0df;
+    margin-right: 5px;
+}
+
+.copyModal .buttons .btn {
+    margin-left:5px;
+}
+
+.copyModal .editHead {
+    width:430px;
+    margin-bottom:10px;
+}
+
+.copyModal .editHead .title {
+    width:auto;
+}
+
+.copyModal .buttons {
+    overflow: hidden;
+}
+.copyModal .editSub {
+    width: 380px;
+}
+
+
+#grid {
+    float:left;
+}
+#alerts {
+    float:left;
+    width: 550px;
+}
+
+#alerts .alert {
+    margin-bottom: 10px;
+}
+
+.schedule .timePicker .form-group {
+    width: auto !important;
+}
+
+.timePicker {
+    width: 92px;
+    overflow: auto;
+}
+
+.timePicker td {
+    vertical-align: middle;
+}
+
+.timePicker .form-group input {
+    font-size: 11px;
+    padding: 3px 0;
+    width: 40px;
+}
+
+
+/** error page **/
+.error {
+    font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+}
+
+.error p {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+
+/** ovverride bootstrap **/
+#date-picker .btn{
+    margin-top:0px;
+    margin-bottom:0px;
+    margin-right: 0px;
+    line-height: 34px;
+    height: 36px;
+    width:46px;
+    padding: 0px 12px;
+}
+
+
+.schedule #date-picker .btn {
+    height: 30px;
+    line-height: 21px;
+    padding: 0 12px;
+    width: 46px;
+}
+
+
+/** change book styles **/
+
+.book #locationBar {
+    border-color: #A3A3A3;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    margin-bottom: 10px;
+}
+
+.book .btn-info, .book .btn-info:hover, .book .btn-info:focus, .book .btn-info:active, .book .open .dropdown-toggle.btn-info {
+    background-color: #E0E0DF;
+    border: 1px solid #A3A3A3;
+    color: #000000;
+}
+
+.book .btn-info .caret {
+    border-bottom-color: #FFFFFF;
+    border-top-color: #000000;
+}
+
+.book #locationBar .sub, .book dropdown.sub .btn {
+    font-size: 12px;
+}
+
+.book .rulsetRow {
+    overflow: visible;
+}
+
+.book .ruleHead.select {
+    text-align: left;
+}
+
+.book simple-dropdown .btn-group .button-label {
+    padding-left: 2px;
+    padding-right: 2px;
+    width: 50px;
+    padding: 4px 2px;
+    width: 50px;
+}
+.book simple-dropdown .btn-group .dropdown-toggle {
+    /*float: right;*/
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-right: 0 none;
+}
+
+.book simple-dropdown .dropdown-menu {
+    margin: -2px 0 0;
+    min-width: 48px;
+    width: 48px;
+    border-right: 0 none;
+}
+
+.book simple-dropdown .dropdown-menu > li > a {
+    margin:0px;
+    width:48px;
+    padding: 3px 3px;
+}
+
+.book simple-dropdown .btn-group {
+    margin-left: -1px;
+    margin-top: -1px;
+    vertical-align: top;
+}
+
+.book .bookRow {
+    overflow: visible;
+    width:500px;
+}
+
+.book .buttons {
+    clear: both;
+    margin-top:60px;
+}
+
+.book dropdown .dropdown-menu {
+    width: 100px;
+    min-width: 100px;
+}
+
+.book #alerts {
+    left: 280px;
+    position: absolute;
+    top: 65px;
+}
+
+
+
+
