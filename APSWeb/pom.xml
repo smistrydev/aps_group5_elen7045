@@ -2,9 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>elen7045.group5.project</groupId>
+	<parent>
+		<groupId>com.wits.elen7045.group5</groupId>
+		<artifactId>account-presentation-system-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>APSWeb</artifactId>
-	<version>1.1-SNAPSHOT</version>
+
 	<name>APSWeb</name>
 	<description>User Interface portion of the account presentation system</description>
 	<packaging>war</packaging>
@@ -15,7 +20,7 @@
 			   <plugin>
 				  <groupId>org.apache.maven.plugins</groupId>
 				  <artifactId>maven-compiler-plugin</artifactId>
-				  <version>2.1</version>
+				  <version>3.1</version>
 				  <configuration>
 					 <source>1.6</source>
 					 <target>1.6</target>
@@ -40,7 +45,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.google.gson</groupId>
-			<artifactId>gson-2.2.4</artifactId>
+			<artifactId>gson</artifactId>
 			<version>2.2.4</version>
 		</dependency>				
 	</dependencies>

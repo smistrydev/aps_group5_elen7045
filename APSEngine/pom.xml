@@ -1,10 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>elen7045.group5.project</groupId>
+
+	<parent>
+		<groupId>com.wits.elen7045.group5</groupId>
+		<artifactId>account-presentation-system-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>APSEngine</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	
 	<name>APSEngine</name>
 	<description>Business logic portion of the account presentation system</description>
 	<packaging>jar</packaging>
@@ -13,17 +18,17 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-				    <artifactId>maven-assembly-plugin</artifactId>
-				    <executions>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<executions>
 						<execution>
 							<phase>package</phase>
 							<goals>
 								<goal>single</goal>
 							</goals>
 						</execution>
-				    </executions>
-				    <configuration>
-				    	<archive>
+					</executions>
+					<configuration>
+						<archive>
 							<manifest>
 								<addClasspath>true</addClasspath>
 								<mainClass>elen7045.group5.project.aps.AccountPresentationEngine</mainClass>
@@ -32,12 +37,12 @@
 						<descriptorRefs>
 							<descriptorRef>jar-with-dependencies</descriptorRef>
 						</descriptorRefs>
-				    </configuration>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -55,5 +60,5 @@
 			<version>4.11</version>
 		</dependency>
 	</dependencies>
-	
+
 </project>
