@@ -51,6 +51,7 @@ public class DataAccessException extends RuntimeException
 	}
 	
 	/**
+	 * Returns a string representation of the object
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString()
