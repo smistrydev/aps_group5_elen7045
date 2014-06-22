@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: MetroGUIEJBClient.jar 
- MetroCommonEJBClient.jar 
- MetroEmailServiceEJBClient.jar 
- LBNServiceEJBClient.jar 
- MetroServiceEJBClient.jar 
- METRODomain-1.1-SNAPSHOT.jar 
- METROUtilities.jar
-
