@@ -62,7 +62,11 @@ CREATE TABLE `audit_log` (
   `timestamp` datetime DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `acknowledged` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`audit_log_id`)
+  PRIMARY KEY (`audit_log_id`),
+  KEY `fk_audit_log_notification_notification_id_idx` (`notification_id`),
+  KEY `fk_audit_log_customer_customer_id_idx` (`customer_id`),
+  CONSTRAINT `fk_audit_log_customer_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_audit_log_notification_notification_id` FOREIGN KEY (`notification_id`) REFERENCES `notification` (`notification_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -234,7 +238,7 @@ CREATE TABLE `notification` (
   `notification_id` int(11) NOT NULL AUTO_INCREMENT,
   `notification_description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`notification_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -329,7 +333,7 @@ CREATE TABLE `statement_provider` (
   `statement_provider_id` int(11) NOT NULL AUTO_INCREMENT,
   `statement_provider_description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`statement_provider_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -381,6 +385,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-22 20:14:09
-
+-- Dump completed on 2014-06-23 19:48:05
 grant all on `aps`.* to 'aps'@'localhost' identified by 'aps';
