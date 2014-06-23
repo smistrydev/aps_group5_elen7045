@@ -1,0 +1,97 @@
+<scrape-session>
+<base-url>www.telkom.co.za</base-url>
+<date>10/01/2008</date>
+<time>13:50:00</time>
+<datapair id="001">
+<text>Account number</text>
+<value>53111116011111</value>
+</datapair>
+<datapair id="002">
+<text>Account holder name</text>
+<value>Mark Scotts</value>
+</datapair>
+<datapair id="003">
+<text>Fish</text>
+<value>19/11/2014</value>
+</datapair>
+<datapair id="004">
+<text>Statement Number</text>
+<value>6675</value>
+</datapair>
+<datapair id="005">
+<text>Statement month</text>
+<value>May</value>
+</datapair>
+<datapair id="006">
+<text>Total due</text>
+<value>R1193.00</value>
+</datapair>
+<datapair id="007">
+<text>Due date</text>
+<value>31/04/2015</value>
+</datapair>
+<datapair id="008">
+<text>Opening balance</text>
+<value>R4.00</value>
+</datapair>
+<datapair id="009">
+<text>Closing balance</text>
+<value>-R795.00</value>
+</datapair>
+<datapair id="010">
+<text>Payment recieved</text>
+<value>R350.00</value>
+</datapair>
+<datapair id="011">
+<text>New charges</text>
+<value>R500.00</value>
+</datapair>
+<datapair id="012">
+<text>Deductions</text>
+<value>R0.00</value>
+</datapair>
+<datapair id="013">
+<text>Discount</text>
+<value>R44.00</value>
+</datapair>
+<datapair id="014">
+<text>VAT amount</text>
+<value>0.14%</value>
+</datapair>
+<datapair id="015">
+<text>Instalment notice</text>
+<value>442B57</value>
+</datapair>
+<datapair id="016">
+<text>Electricity used</text>
+<value>600 kWh</value>
+</datapair>
+<datapair id="017">
+<text>Electricity charges</text>
+<value>R700.00</value>
+</datapair>
+<datapair id="018">
+<text>Gas used</text>
+<value>40</value>
+</datapair>
+<datapair id="019">
+<text>Gas charges</text>
+<value>R400.00</value>
+</datapair>
+<datapair id="020">
+<text>Water used</text>
+<value>50L</value>
+</datapair>
+<datapair id="021">
+<text>Water charges</text>
+<value>R50.00</value>
+</datapair>
+<datapair id="022">
+<text>Sewerage charges</text>
+<value>R32.00</value>
+</datapair>
+<datapair id="023">
+<text>Refuse charges</text>
+<value>R11.00</value>
+</datapair>
+</scrape-session>
