@@ -37,7 +37,7 @@ CREATE TABLE `account` (
   KEY `fk_account_billing_company_billing_company_id_idx` (`billing_company_id`),
   CONSTRAINT `fk_account_billing_company_billing_company_id` FOREIGN KEY (`billing_company_id`) REFERENCES `billing_company` (`billing_company_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_account_customer_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +46,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,'55554942222883',1,1,'user','password'),(2,'53111116011111',1,2,'user','password'),(3,'53666946068883',1,3,'user','password');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -95,7 +96,7 @@ CREATE TABLE `billing_company` (
   `retry_interval_minutes` int(11) DEFAULT NULL,
   `lead_time_days` int(11) DEFAULT NULL,
   PRIMARY KEY (`billing_company_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,6 +105,7 @@ CREATE TABLE `billing_company` (
 
 LOCK TABLES `billing_company` WRITE;
 /*!40000 ALTER TABLE `billing_company` DISABLE KEYS */;
+INSERT INTO `billing_company` VALUES (1,'Credit Card',1,'www.telkom.co.za',1,1,1),(2,'Municipality',1,'www.telkom.co.za',1,1,1),(3,'Telco',1,'www.telkom.co.za',1,1,1);
 /*!40000 ALTER TABLE `billing_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +153,7 @@ CREATE TABLE `customer` (
   `name` varchar(100) DEFAULT NULL,
   `surname` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,6 +162,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'test@me.com','test','Testing','User');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,5 +388,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-23 19:48:05
+-- Dump completed on 2014-06-23 23:56:57
 grant all on `aps`.* to 'aps'@'localhost' identified by 'aps';
