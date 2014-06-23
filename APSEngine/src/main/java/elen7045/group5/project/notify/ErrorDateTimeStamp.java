@@ -22,7 +22,7 @@ public class ErrorDateTimeStamp {
 		
 		public String getXMLName()
 		{
-		 return "Time";
+		 return "TimeStamp";
 		}
 	}
 

@@ -1,22 +1,28 @@
 package elen7045.group5.project.notify;
 
 public class CreateXMLHeaderandFooter {
-	private String fieldName;
-    private String convertName;
-	  
-		public CreateXMLHeaderandFooter(String name)
+	private String fieldName;   
+    
+	  public CreateXMLHeaderandFooter()
+	  {
+		  
+	  }
+	
+		
+		public String createXMLHeader(String name )
 		{
-			convertName = name;
-		}
-		public String createXMLHeader( )
-		{
-	     return fieldName = "<" + convertName +">";	     
+	     return fieldName = "<" + name +">";	     
 			
 		}
-		public String createXMLFooter()
+		public String createXMLFooter(String name)
 		{
-		return fieldName = "<" + convertName +"/>";
+		return fieldName = "<" + name +"/>";
 		
+		}
+		public String createXMLdata(String name )
+		{
+	     return fieldName = "<" + name +">";	     
+			
 		}
 		
 	}
