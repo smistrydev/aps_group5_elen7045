@@ -6,7 +6,7 @@
 //
 
 
-package elen7045.group5.project.wsa.jaxb;
+package elen7045.group5.project.wsa;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

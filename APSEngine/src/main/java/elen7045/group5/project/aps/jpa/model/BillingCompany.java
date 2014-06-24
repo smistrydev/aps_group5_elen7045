@@ -1,0 +1,151 @@
+package elen7045.group5.project.aps.jpa.model;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the billing_company database table.
+ * 
+ */
+@Entity
+@Table(name="billing_company")
+@NamedQuery(name="BillingCompany.findAll", query="SELECT b FROM BillingCompany b")
+public class BillingCompany implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="billing_company_id")
+	private int billingCompanyId;
+
+	@Column(name="billing_company_name")
+	private String billingCompanyName;
+
+	@Column(name="days_per_cycle")
+	private int daysPerCycle;
+
+	@Column(name="lead_time_days")
+	private int leadTimeDays;
+
+	@Column(name="retry_count")
+	private int retryCount;
+
+	@Column(name="retry_interval_minutes")
+	private int retryIntervalMinutes;
+
+	private String url;
+
+	//bi-directional many-to-one association to Account
+	@OneToMany(mappedBy="billingCompany")
+	private List<Account> accounts;
+
+	//bi-directional many-to-one association to MaintanceWindow
+	@OneToMany(mappedBy="billingCompany")
+	private List<MaintanceWindow> maintanceWindows;
+
+	public BillingCompany() {
+	}
+
+	public int getBillingCompanyId() {
+		return this.billingCompanyId;
+	}
+
+	public void setBillingCompanyId(int billingCompanyId) {
+		this.billingCompanyId = billingCompanyId;
+	}
+
+	public String getBillingCompanyName() {
+		return this.billingCompanyName;
+	}
+
+	public void setBillingCompanyName(String billingCompanyName) {
+		this.billingCompanyName = billingCompanyName;
+	}
+
+	public int getDaysPerCycle() {
+		return this.daysPerCycle;
+	}
+
+	public void setDaysPerCycle(int daysPerCycle) {
+		this.daysPerCycle = daysPerCycle;
+	}
+
+	public int getLeadTimeDays() {
+		return this.leadTimeDays;
+	}
+
+	public void setLeadTimeDays(int leadTimeDays) {
+		this.leadTimeDays = leadTimeDays;
+	}
+
+	public int getRetryCount() {
+		return this.retryCount;
+	}
+
+	public void setRetryCount(int retryCount) {
+		this.retryCount = retryCount;
+	}
+
+	public int getRetryIntervalMinutes() {
+		return this.retryIntervalMinutes;
+	}
+
+	public void setRetryIntervalMinutes(int retryIntervalMinutes) {
+		this.retryIntervalMinutes = retryIntervalMinutes;
+	}
+
+	public String getUrl() {
+		return this.url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public List<Account> getAccounts() {
+		return this.accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+	public Account addAccount(Account account) {
+		getAccounts().add(account);
+		account.setBillingCompany(this);
+
+		return account;
+	}
+
+	public Account removeAccount(Account account) {
+		getAccounts().remove(account);
+		account.setBillingCompany(null);
+
+		return account;
+	}
+
+	public List<MaintanceWindow> getMaintanceWindows() {
+		return this.maintanceWindows;
+	}
+
+	public void setMaintanceWindows(List<MaintanceWindow> maintanceWindows) {
+		this.maintanceWindows = maintanceWindows;
+	}
+
+	public MaintanceWindow addMaintanceWindow(MaintanceWindow maintanceWindow) {
+		getMaintanceWindows().add(maintanceWindow);
+		maintanceWindow.setBillingCompany(this);
+
+		return maintanceWindow;
+	}
+
+	public MaintanceWindow removeMaintanceWindow(MaintanceWindow maintanceWindow) {
+		getMaintanceWindows().remove(maintanceWindow);
+		maintanceWindow.setBillingCompany(null);
+
+		return maintanceWindow;
+	}
+
+}
