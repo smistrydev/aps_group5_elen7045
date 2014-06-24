@@ -69,12 +69,20 @@ public class RepositoryCustomerService implements CustomerService
 		customer.setName(updated.getName());
 		customer.setPassword(updated.getPassword());
 		customer.setSurname(updated.getSurname());
-		
+
 		return customer;
 	}
 
 	public void setCustomerRepository(CustomerRepository customerRepository)
 	{
 		this.customerRepository = customerRepository;
+	}
+
+	@Override
+	public Customer findByEmailAddres(String emailAddress)
+	{
+		Customer customer = this.customerRepository.findByEmailAddress(emailAddress);
+
+		return customer;
 	}
 }

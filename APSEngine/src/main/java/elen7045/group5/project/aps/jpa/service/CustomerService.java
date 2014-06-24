@@ -3,7 +3,6 @@ package elen7045.group5.project.aps.jpa.service;
 import java.util.List;
 
 import elen7045.group5.project.aps.jpa.model.Customer;
-import elen7045.group5.project.aps.jpa.model.Notification;
 
 public interface CustomerService
 {
@@ -15,6 +14,8 @@ public interface CustomerService
 	public List<Customer> findAll();
 
 	public Customer findById(Integer id);
+	
+	public Customer findByEmailAddres(String emailAddress);
 
 	public Customer update(Customer updated) throws NotFoundException;
 }
