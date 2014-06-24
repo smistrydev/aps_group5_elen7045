@@ -12,6 +12,7 @@ public class ErrorMessagesFromTheDB {
 	    public ErrorMessagesFromTheDB(int errorCode)
 	    {
 	    	this.errorCode = errorCode;
+	    	fetchErrorMessageFromDB();
 	    }
 	    
 	    public String getErrorMessage()
