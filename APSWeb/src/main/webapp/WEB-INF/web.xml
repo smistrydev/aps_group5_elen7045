@@ -3,6 +3,23 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>Application Presentation System</display-name>
+	
+	
+	<context-param>
+      <param-name>contextClass</param-name>
+      <param-value>
+         org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
+   	</context-param>
+   	<context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>elen7045.group5.project.aps.jpa.config</param-value>
+   	</context-param>
+   	<listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   	</listener>
+	
+	
 	<servlet>
 		<servlet-name>RESTeasy</servlet-name>
 		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
@@ -31,5 +48,7 @@
         <error-code>500</error-code>
         <location>/errorPage/500.html</location>
     </error-page>
+    
+ 
     
 </web-app>
