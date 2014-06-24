@@ -62,7 +62,7 @@ CREATE TABLE `audit_log` (
   `notification_id` int(11) DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `acknowledged` bit(1) DEFAULT NULL,
+  `acknowledged` int(1) DEFAULT NULL,
   PRIMARY KEY (`audit_log_id`),
   KEY `fk_audit_log_notification_notification_id_idx` (`notification_id`),
   KEY `fk_audit_log_customer_customer_id_idx` (`customer_id`),
@@ -363,7 +363,7 @@ CREATE TABLE `telco_service_provider` (
   `service_charges` decimal(10,2) DEFAULT NULL,
   `call_charges` decimal(10,2) DEFAULT NULL,
   `total_number_of_calls` int(11) DEFAULT NULL,
-  `total_call_duration_seconds` bigint(20) DEFAULT NULL,
+  `total_call_duration_seconds` int(11) DEFAULT NULL,
   PRIMARY KEY (`telco_service_provider_id`),
   KEY `fk_telco_service_provider_statement_statement_id_idx` (`statement_id`),
   CONSTRAINT `fk_telco_service_provider_statement_statement_id` FOREIGN KEY (`statement_id`) REFERENCES `statement` (`statement_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
