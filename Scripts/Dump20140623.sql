@@ -167,33 +167,33 @@ INSERT INTO `customer` VALUES (1,'test@me.com','test','Testing','User');
 UNLOCK TABLES;
 
 --
--- Table structure for table `maintance_window`
+-- Table structure for table `maintenance_window`
 --
 
-DROP TABLE IF EXISTS `maintance_window`;
+DROP TABLE IF EXISTS `maintenance_window`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `maintance_window` (
-  `maintance_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `maintenance_window` (
+  `maintenance_id` int(11) NOT NULL AUTO_INCREMENT,
   `minute` varchar(100) DEFAULT NULL,
   `hour` varchar(100) DEFAULT NULL,
   `day` varchar(100) DEFAULT NULL,
   `week_number` varchar(100) DEFAULT NULL,
   `month` varchar(100) DEFAULT NULL,
   `billing_company_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`maintance_id`),
-  KEY `fk_maintance_window_billing_company_billing_company_id_idx` (`billing_company_id`),
-  CONSTRAINT `fk_maintance_window_billing_company_billing_company_id` FOREIGN KEY (`billing_company_id`) REFERENCES `billing_company` (`billing_company_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`maintenance_id`),
+  KEY `fk_maintenance_window_billing_company_billing_company_id_idx` (`billing_company_id`),
+  CONSTRAINT `fk_maintenance_window_billing_company_billing_company_id` FOREIGN KEY (`billing_company_id`) REFERENCES `billing_company` (`billing_company_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `maintance_window`
+-- Dumping data for table `maintenance_window`
 --
 
-LOCK TABLES `maintance_window` WRITE;
-/*!40000 ALTER TABLE `maintance_window` DISABLE KEYS */;
-/*!40000 ALTER TABLE `maintance_window` ENABLE KEYS */;
+LOCK TABLES `maintenance_window` WRITE;
+/*!40000 ALTER TABLE `maintenance_window` DISABLE KEYS */;
+/*!40000 ALTER TABLE `maintenance_window` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
