@@ -2,7 +2,6 @@ package elen7045.group5.project.aps.jpa.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.math.BigDecimal;
 
 

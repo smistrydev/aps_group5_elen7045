@@ -74,7 +74,7 @@ public class ScrapeData implements Serializable {
 		this.statusCode = statusCode;
 	}
 
-	public Object getXmlResult() {
+	public String getXmlResult() {
 		return this.xmlResult;
 	}
 
