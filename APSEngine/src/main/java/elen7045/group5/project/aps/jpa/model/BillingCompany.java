@@ -41,9 +41,9 @@ public class BillingCompany implements Serializable {
 	@OneToMany(mappedBy="billingCompany")
 	private List<Account> accounts;
 
-	//bi-directional many-to-one association to MaintanceWindow
+	//bi-directional many-to-one association to MaintenanceWindow
 	@OneToMany(mappedBy="billingCompany")
-	private List<MaintanceWindow> maintanceWindows;
+	private List<MaintenanceWindow> maintenanceWindows;
 
 	public BillingCompany() {
 	}
@@ -126,26 +126,26 @@ public class BillingCompany implements Serializable {
 		return account;
 	}
 
-	public List<MaintanceWindow> getMaintanceWindows() {
-		return this.maintanceWindows;
+	public List<MaintenanceWindow> getMaintenanceWindows() {
+		return this.maintenanceWindows;
 	}
 
-	public void setMaintanceWindows(List<MaintanceWindow> maintanceWindows) {
-		this.maintanceWindows = maintanceWindows;
+	public void setMaintenanceWindows(List<MaintenanceWindow> maintenanceWindows) {
+		this.maintenanceWindows = maintenanceWindows;
 	}
 
-	public MaintanceWindow addMaintanceWindow(MaintanceWindow maintanceWindow) {
-		getMaintanceWindows().add(maintanceWindow);
-		maintanceWindow.setBillingCompany(this);
+	public MaintenanceWindow addMaintenanceWindow(MaintenanceWindow maintenanceWindow) {
+		getMaintenanceWindows().add(maintenanceWindow);
+		maintenanceWindow.setBillingCompany(this);
 
-		return maintanceWindow;
+		return maintenanceWindow;
 	}
 
-	public MaintanceWindow removeMaintanceWindow(MaintanceWindow maintanceWindow) {
-		getMaintanceWindows().remove(maintanceWindow);
-		maintanceWindow.setBillingCompany(null);
+	public MaintenanceWindow removeMaintenanceWindow(MaintenanceWindow maintenanceWindow) {
+		getMaintenanceWindows().remove(maintenanceWindow);
+		maintenanceWindow.setBillingCompany(null);
 
-		return maintanceWindow;
+		return maintenanceWindow;
 	}
 
 }
