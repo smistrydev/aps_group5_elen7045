@@ -7,7 +7,7 @@ import elen7045.group5.project.aps.jpa.model.Customer;
 public interface CustomerService
 {
 
-	public Customer create(Customer Customer);
+	public Customer create(Customer created);
 
 	public Customer delete(int id) throws NotFoundException;
 
