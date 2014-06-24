@@ -1,7 +1,7 @@
 package elen7045.group5.project.aps.jpa.repository;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +36,17 @@ public class NotificationRepositoryTest
 
 		assertNotNull(notifications);
 		assertTrue(notifications.iterator().hasNext());
+
+	}
+
+	@Test
+	public void testNotificationGetOne()
+	{
+		
+		Integer testId = new Integer(3);
+		Notification notification = notificationService.findById(testId);
+
+		assertNotNull(notification);
 
 	}
 
