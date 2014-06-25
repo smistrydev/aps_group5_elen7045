@@ -16,7 +16,6 @@ public class MunicipalProvider implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="municipality_id")
 	private int municipalityId;
 

@@ -5,9 +5,9 @@ package elen7045.group5.project.aps.jpa.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import elen7045.group5.project.aps.jpa.model.Account;
+import elen7045.group5.project.aps.jpa.model.AuditLog;
 
-public interface AuditLogRepository extends JpaRepository<Account, Integer>
+public interface AuditLogRepository extends JpaRepository<AuditLog, Integer>
 {
 
 }

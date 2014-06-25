@@ -17,7 +17,6 @@ public class CreditCardProvider implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="credit_card_provider_id")
 	private int creditCardProviderId;
 

@@ -16,7 +16,6 @@ public class ScrapeData implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="scrape_data_id")
 	private int scrapeDataId;
 
@@ -30,9 +29,8 @@ public class ScrapeData implements Serializable {
 	@Column(name="status_code")
 	private int statusCode;
 
-	@Lob
-	@Column(name="xml_result", columnDefinition="TEXT")
-	private String xmlResult;
+	@Column(name="xml_result")
+	private Object xmlResult;
 
 	//bi-directional many-to-one association to Statement
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -74,11 +72,11 @@ public class ScrapeData implements Serializable {
 		this.statusCode = statusCode;
 	}
 
-	public String getXmlResult() {
+	public Object getXmlResult() {
 		return this.xmlResult;
 	}
 
-	public void setXmlResult(String xmlResult) {
+	public void setXmlResult(Object xmlResult) {
 		this.xmlResult = xmlResult;
 	}
 
