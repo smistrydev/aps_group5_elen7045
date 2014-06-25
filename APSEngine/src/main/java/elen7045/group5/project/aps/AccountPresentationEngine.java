@@ -1,51 +1,97 @@
 package elen7045.group5.project.aps;
 
-import java.util.Timer;
+import java.io.File;
+import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import elen7045.group5.project.aps.billing.BillingCompanyBean;
 import elen7045.group5.project.wsa.WebsiteScraperGateway;
 
 /**
- * Engine is implemented as a Timer as it will execute at regular intervals and
- * check if scheduling is required to be performed.
- * 
- * Perhaps we can use this as a thread per billing company? So, have multiple
- * instances running so we don't lag or do sequential polling
+ * This is the main entry point into the Account Presentation Engine. It is
+ * responsible for managing all scraping operations for the various billing
+ * companies. Each scraping operation is created as a separate thread to allow
+ * concurrent scraping to occur and not to have errors at one company affect
+ * another scrape.
  */
-public class AccountPresentationEngine extends Timer
+public class AccountPresentationEngine
 {
-	// need to inject or look it up
+	private String logDir;
+	private Logger logger;
+	
 	private WebsiteScraperGateway	gateway;
 	private BillingCompanyBean		billingCompany;
-
+	
 	/**
-	 * Constructor creates the engine for a specific company
-	 * 
-	 * @param bcb
-	 *            - Billing company info
+	 * Main entry point
+	 * @param args - Command line arguments
 	 */
-	public AccountPresentationEngine(BillingCompanyBean bcb)
+	public static void main(String[] args)
 	{
-		this.billingCompany = bcb;
-	}
+		try
+		{
+			AccountPresentationEngine ape = new AccountPresentationEngine();
+			ape.init();
+			ape.startApplication();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
+		System.exit(0);
+	}	
 
+	
 	/**
 	 * Method kicks off the whole process of retrieving, validating and
 	 * persisting scraped data
 	 */
-	public void process()
+	void startApplication() throws IOException
 	{
-		// get a list of all customers for the billing comany
+		
+		logger.info("Get a list of all customers for the billing comany");
 
-		// go through each one and perform a scrape - perhaps this should also
-		// be threaded?
-		String result = gateway.performScrape(null);
+		logger.info("go through each one and perform a scrape - perhaps this should also be threaded");
+		//String result = gateway.performScrape(null);
 
-		// parse the returned result into objects via JaxB
+		logger.info("parse the returned result into objects via JaxB");
 
 		// validate the info
 
 		// persist the data, persistence object should do the audit as well
 	}
-
+	
+	
+	/**
+	 * Initialises some required objects
+	 */
+	private void init() throws IOException
+	{
+		//createLogDirectory();
+		logger = LoggerFactory.getLogger("APS");
+	}
+	
+	/**
+	 * This creates a log directory for the agent, if it does not already exist
+	 * @param conf - Agent configuration info
+	 * @throws IOException - If an error occurs while creating the log directory
+	 */
+	private void createLogDirectory() throws IOException
+	{
+		this.logDir = new StringBuilder((new File(".").getCanonicalPath()))
+								.append(System.getProperty("file.separator"))
+								.append("log")
+								.append(System.getProperty("file.separator"))
+								.toString();
+		
+		File dir = new File(logDir);
+		if(dir.exists() == false)
+		{
+			dir.mkdirs();
+		}
+	}
 }

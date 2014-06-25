@@ -1,17 +1,18 @@
 package elen7045.group5.project.notify;
 
-public class ApplicationErrorsBean {
-	
-	private int errorCode;	
-	private ErrorMessagesFromTheDB errorMessageFromDB;
-	private String errorMSG;
-	private CreateErrorsXML XMLerror;
-	
+public class ApplicationErrorsBean
+{
+
+	private int						errorCode;
+	private ErrorMessagesFromTheDB	errorMessageFromDB;
+	private String					errorMSG;
+	private CreateErrorsXML			XMLerror;
+
 	public ApplicationErrorsBean(EApplicationErrors appErrors)
 	{
 		errorCode = appErrors.getErrorCode();
 		getErrorMessageFromDatabase();
-		
+
 	}
 
 	public ApplicationErrorsBean(EDataErrors appErrors)
@@ -34,26 +35,23 @@ public class ApplicationErrorsBean {
 
 	public int getErrorCode()
 	{
-		return errorCode ;
+		return errorCode;
 	}
-   
+
 	private void getErrorMessageFromDatabase()
 	{
 		errorMessageFromDB = new ErrorMessagesFromTheDB(getErrorCode());
 		errorMSG = errorMessageFromDB.getErrorMessage();
 	}
-	
-	
+
 	public String getXMLError()
-	
+
 	{
-	 XMLerror = new CreateErrorsXML();
-	 XMLerror.setErrorCode(getErrorCode());	
-	 XMLerror.setErrorMessage(errorMSG);
-	 return XMLerror.getXMlErrorMessage();
-	 
-	
+		XMLerror = new CreateErrorsXML();
+		XMLerror.setErrorCode(getErrorCode());
+		XMLerror.setErrorMessage(errorMSG);
+		return XMLerror.getXMlErrorMessage();
+
 	}
-    
-	
+
 }
