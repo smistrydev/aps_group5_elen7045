@@ -29,8 +29,9 @@ public class ScrapeData implements Serializable {
 	@Column(name="status_code")
 	private int statusCode;
 
-	@Column(name="xml_result")
-	private Object xmlResult;
+	@Lob
+	@Column(name="xml_result", columnDefinition="TEXT")
+	private String xmlResult;
 
 	//bi-directional many-to-one association to Statement
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -76,7 +77,7 @@ public class ScrapeData implements Serializable {
 		return this.xmlResult;
 	}
 
-	public void setXmlResult(Object xmlResult) {
+	public void setXmlResult(String xmlResult) {
 		this.xmlResult = xmlResult;
 	}
 
