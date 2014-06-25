@@ -10,6 +10,7 @@
 
 	<artifactId>APSEngine</artifactId>
 	<name>APSEngine</name>
+	
 	<description>Business logic portion of the account presentation system</description>
 	<packaging>jar</packaging>
 

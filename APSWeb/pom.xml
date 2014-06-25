@@ -8,12 +8,19 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
-	<groupId>elen7045.group5.project</groupId>
 	<artifactId>APSWeb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>APSWeb</name>
+	
 	<description>User Interface portion of the account presentation system</description>
 	<packaging>war</packaging>
+	
+	
+	<properties>
+        <slf4j.version>1.6.1</slf4j.version>
+        <spring.version>3.2.5.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+	
 	
 	<build>
 		<pluginManagement>
@@ -38,12 +45,20 @@
 			<artifactId>APSEngine</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<!-- Third party dependencies -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.8</version>
-		</dependency>
+
+        <!-- Logging dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jsp-api</artifactId>
