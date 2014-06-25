@@ -13,7 +13,7 @@
    	</context-param>
    	<context-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>elen7045.group5.project.aps.jpa.config</param-value>
+      <param-value>elen7045.group5.project.aps.jpa.config.ApplicationContext</param-value>
    	</context-param>
    	<listener>
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
