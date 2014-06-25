@@ -65,7 +65,6 @@ public class RepositoryNotificationService implements NotificationService
 			throw new NotFoundException();
 		}
 
-		
 		notification.setNotificationDescription(updated.getNotificationDescription());
 
 		return notification;

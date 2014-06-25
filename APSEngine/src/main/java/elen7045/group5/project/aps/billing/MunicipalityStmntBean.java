@@ -26,7 +26,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param instalmentNotice
-	 *             - The instalmentNotice to set
+	 *            - The instalmentNotice to set
 	 */
 	public void setInstalmentNotice(String instalmentNotice)
 	{
@@ -34,7 +34,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the electricityUsed
+	 * @return Returns the electricityUsed
 	 */
 	public float getElectricityUsed()
 	{
@@ -42,8 +42,8 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @param  electricityUsed
-	 *             - The electricityUsed to set
+	 * @param electricityUsed
+	 *            - The electricityUsed to set
 	 */
 	public void setElectricityUsed(float electricityUsed)
 	{
@@ -51,7 +51,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the electricityCharges
+	 * @return Returns the electricityCharges
 	 */
 	public float getElectricityCharges()
 	{
@@ -60,7 +60,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param electricityCharges
-	 *             - The electricityCharges to set
+	 *            - The electricityCharges to set
 	 */
 	public void setElectricityCharges(float electricityCharges)
 	{
@@ -68,7 +68,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the gasUsed
+	 * @return Returns the gasUsed
 	 */
 	public float getGasUsed()
 	{
@@ -77,7 +77,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param gasUsed
-	 *             - The gasUsed to set
+	 *            - The gasUsed to set
 	 */
 	public void setGasUsed(float gasUsed)
 	{
@@ -85,7 +85,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the gasCharges
+	 * @return Returns the gasCharges
 	 */
 	public float getGasCharges()
 	{
@@ -94,7 +94,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param gasCharges
-	 *             - The gasCharges to set
+	 *            - The gasCharges to set
 	 */
 	public void setGasCharges(float gasCharges)
 	{
@@ -102,7 +102,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the waterUsed
+	 * @return Returns the waterUsed
 	 */
 	public float getWaterUsed()
 	{
@@ -111,7 +111,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param waterUsed
-	 *             - The waterUsed to set
+	 *            - The waterUsed to set
 	 */
 	public void setWaterUsed(float waterUsed)
 	{
@@ -119,7 +119,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the waterCharges
+	 * @return Returns the waterCharges
 	 */
 	public float getWaterCharges()
 	{
@@ -128,7 +128,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param waterCharges
-	 *             - The waterCharges to set
+	 *            - The waterCharges to set
 	 */
 	public void setWaterCharges(float waterCharges)
 	{
@@ -136,7 +136,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the sewerageCharges
+	 * @return Returns the sewerageCharges
 	 */
 	public float getSewerageCharges()
 	{
@@ -145,7 +145,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param sewerageCharges
-	 *             - The sewerageCharges to set
+	 *            - The sewerageCharges to set
 	 */
 	public void setSewerageCharges(float sewerageCharges)
 	{
@@ -153,7 +153,7 @@ public class MunicipalityStmntBean extends StatementBean
 	}
 
 	/**
-	 * @return  Returns the refuseCharges
+	 * @return Returns the refuseCharges
 	 */
 	public float getRefuseCharges()
 	{
@@ -162,7 +162,7 @@ public class MunicipalityStmntBean extends StatementBean
 
 	/**
 	 * @param refuseCharges
-	 *             - The refuseCharges to set
+	 *            - The refuseCharges to set
 	 */
 	public void setRefuseCharges(float refuseCharges)
 	{

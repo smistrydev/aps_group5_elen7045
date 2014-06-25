@@ -4,118 +4,137 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the customer database table.
  * 
  */
 @Entity
-@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
-public class Customer implements Serializable {
-	private static final long serialVersionUID = 1L;
+@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
+public class Customer implements Serializable
+{
+	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name="customer_id")
-	private int customerId;
+	@Column(name = "customer_id")
+	private int					customerId;
 
-	@Column(name="email_address")
-	private String emailAddress;
+	@Column(name = "email_address")
+	private String				emailAddress;
 
-	private String name;
+	private String				name;
 
-	private String password;
+	private String				password;
 
-	private String surname;
+	private String				surname;
 
-	//bi-directional many-to-one association to Account
-	@OneToMany(mappedBy="customer")
-	private List<Account> accounts;
+	// bi-directional many-to-one association to Account
+	@OneToMany(mappedBy = "customer")
+	private List<Account>		accounts;
 
-	//bi-directional many-to-one association to AuditLog
-	@OneToMany(mappedBy="customer")
-	private List<AuditLog> auditLogs;
+	// bi-directional many-to-one association to AuditLog
+	@OneToMany(mappedBy = "customer")
+	private List<AuditLog>		auditLogs;
 
-	public Customer() {
+	public Customer()
+	{
 	}
 
-	public int getCustomerId() {
+	public int getCustomerId()
+	{
 		return this.customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(int customerId)
+	{
 		this.customerId = customerId;
 	}
 
-	public String getEmailAddress() {
+	public String getEmailAddress()
+	{
 		return this.emailAddress;
 	}
 
-	public void setEmailAddress(String emailAddress) {
+	public void setEmailAddress(String emailAddress)
+	{
 		this.emailAddress = emailAddress;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public String getPassword() {
+	public String getPassword()
+	{
 		return this.password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password)
+	{
 		this.password = password;
 	}
 
-	public String getSurname() {
+	public String getSurname()
+	{
 		return this.surname;
 	}
 
-	public void setSurname(String surname) {
+	public void setSurname(String surname)
+	{
 		this.surname = surname;
 	}
 
-	public List<Account> getAccounts() {
+	public List<Account> getAccounts()
+	{
 		return this.accounts;
 	}
 
-	public void setAccounts(List<Account> accounts) {
+	public void setAccounts(List<Account> accounts)
+	{
 		this.accounts = accounts;
 	}
 
-	public Account addAccount(Account account) {
+	public Account addAccount(Account account)
+	{
 		getAccounts().add(account);
 		account.setCustomer(this);
 
 		return account;
 	}
 
-	public Account removeAccount(Account account) {
+	public Account removeAccount(Account account)
+	{
 		getAccounts().remove(account);
 		account.setCustomer(null);
 
 		return account;
 	}
 
-	public List<AuditLog> getAuditLogs() {
+	public List<AuditLog> getAuditLogs()
+	{
 		return this.auditLogs;
 	}
 
-	public void setAuditLogs(List<AuditLog> auditLogs) {
+	public void setAuditLogs(List<AuditLog> auditLogs)
+	{
 		this.auditLogs = auditLogs;
 	}
 
-	public AuditLog addAuditLog(AuditLog auditLog) {
+	public AuditLog addAuditLog(AuditLog auditLog)
+	{
 		getAuditLogs().add(auditLog);
 		auditLog.setCustomer(this);
 
 		return auditLog;
 	}
 
-	public AuditLog removeAuditLog(AuditLog auditLog) {
+	public AuditLog removeAuditLog(AuditLog auditLog)
+	{
 		getAuditLogs().remove(auditLog);
 		auditLog.setCustomer(null);
 

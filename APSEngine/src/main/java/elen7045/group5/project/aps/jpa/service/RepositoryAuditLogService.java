@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import elen7045.group5.project.aps.jpa.model.AuditLog;
-import elen7045.group5.project.aps.jpa.repository.AccountRepository;
 import elen7045.group5.project.aps.jpa.repository.AuditLogRepository;
 
 @Service

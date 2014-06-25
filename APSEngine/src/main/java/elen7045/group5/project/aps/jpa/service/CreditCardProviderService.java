@@ -14,7 +14,7 @@ public interface CreditCardProviderService
 	public List<CreditCardProvider> findAll();
 
 	public CreditCardProvider findById(Integer id);
-	
+
 	public CreditCardProvider findByEmailAddres(String emailAddress);
 
 	public CreditCardProvider update(CreditCardProvider updated) throws NotFoundException;

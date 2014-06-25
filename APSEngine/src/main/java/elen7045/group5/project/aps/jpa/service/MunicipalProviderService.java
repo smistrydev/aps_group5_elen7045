@@ -14,7 +14,7 @@ public interface MunicipalProviderService
 	public List<MunicipalProvider> findAll();
 
 	public MunicipalProvider findById(Integer id);
-	
+
 	public MunicipalProvider findByEmailAddres(String emailAddress);
 
 	public MunicipalProvider update(MunicipalProvider updated) throws NotFoundException;

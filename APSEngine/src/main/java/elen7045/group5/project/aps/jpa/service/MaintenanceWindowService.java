@@ -14,7 +14,7 @@ public interface MaintenanceWindowService
 	public List<MaintenanceWindow> findAll();
 
 	public MaintenanceWindow findById(Integer id);
-	
+
 	public MaintenanceWindow findByEmailAddres(String emailAddress);
 
 	public MaintenanceWindow update(MaintenanceWindow updated) throws NotFoundException;

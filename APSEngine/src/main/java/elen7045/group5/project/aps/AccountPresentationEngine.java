@@ -18,15 +18,17 @@ import elen7045.group5.project.wsa.WebsiteScraperGateway;
  */
 public class AccountPresentationEngine
 {
-	private String logDir;
-	private Logger logger;
-	
+	private String					logDir;
+	private Logger					logger;
+
 	private WebsiteScraperGateway	gateway;
 	private BillingCompanyBean		billingCompany;
-	
+
 	/**
 	 * Main entry point
-	 * @param args - Command line arguments
+	 * 
+	 * @param args
+	 *            - Command line arguments
 	 */
 	public static void main(String[] args)
 	{
@@ -36,27 +38,26 @@ public class AccountPresentationEngine
 			ape.init();
 			ape.startApplication();
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			System.exit(-1);
 		}
-		
-		System.exit(0);
-	}	
 
-	
+		System.exit(0);
+	}
+
 	/**
 	 * Method kicks off the whole process of retrieving, validating and
 	 * persisting scraped data
 	 */
 	void startApplication() throws IOException
 	{
-		
+
 		logger.info("Get a list of all customers for the billing comany");
 
 		logger.info("go through each one and perform a scrape - perhaps this should also be threaded");
-		//String result = gateway.performScrape(null);
+		// String result = gateway.performScrape(null);
 
 		logger.info("parse the returned result into objects via JaxB");
 
@@ -64,32 +65,34 @@ public class AccountPresentationEngine
 
 		// persist the data, persistence object should do the audit as well
 	}
-	
-	
+
 	/**
 	 * Initialises some required objects
 	 */
 	private void init() throws IOException
 	{
-		//createLogDirectory();
+		// createLogDirectory();
 		logger = LoggerFactory.getLogger("APS");
 	}
-	
+
 	/**
 	 * This creates a log directory for the agent, if it does not already exist
-	 * @param conf - Agent configuration info
-	 * @throws IOException - If an error occurs while creating the log directory
+	 * 
+	 * @param conf
+	 *            - Agent configuration info
+	 * @throws IOException
+	 *             - If an error occurs while creating the log directory
 	 */
 	private void createLogDirectory() throws IOException
 	{
 		this.logDir = new StringBuilder((new File(".").getCanonicalPath()))
-								.append(System.getProperty("file.separator"))
-								.append("log")
-								.append(System.getProperty("file.separator"))
-								.toString();
-		
+				.append(System.getProperty("file.separator"))
+				.append("log")
+				.append(System.getProperty("file.separator"))
+				.toString();
+
 		File dir = new File(logDir);
-		if(dir.exists() == false)
+		if (dir.exists() == false)
 		{
 			dir.mkdirs();
 		}

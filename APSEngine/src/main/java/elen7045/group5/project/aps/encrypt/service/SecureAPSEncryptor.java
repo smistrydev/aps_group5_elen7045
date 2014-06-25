@@ -7,7 +7,7 @@ import org.jasypt.util.text.StrongTextEncryptor;
  * Utility for encrypting of text messages.
  * 
  * @author Sanjay Mistry
- *
+ * 
  */
 public class SecureAPSEncryptor implements APSEncryptor
 {

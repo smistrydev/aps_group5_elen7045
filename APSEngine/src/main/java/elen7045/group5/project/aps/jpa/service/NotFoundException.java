@@ -1,6 +1,7 @@
 package elen7045.group5.project.aps.jpa.service;
 
-public class NotFoundException extends RuntimeException {
+public class NotFoundException extends RuntimeException
+{
 
 	/**
 	 * 

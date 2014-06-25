@@ -4,88 +4,101 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the scrape_data database table.
  * 
  */
 @Entity
-@Table(name="scrape_data")
-@NamedQuery(name="ScrapeData.findAll", query="SELECT s FROM ScrapeData s")
-public class ScrapeData implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "scrape_data")
+@NamedQuery(name = "ScrapeData.findAll", query = "SELECT s FROM ScrapeData s")
+public class ScrapeData implements Serializable
+{
+	private static final long	serialVersionUID	= 1L;
 
 	@Id
-	@Column(name="scrape_data_id")
-	private int scrapeDataId;
+	@Column(name = "scrape_data_id")
+	private int					scrapeDataId;
 
-	@Column(name="customer_id")
-	private int customerId;
+	@Column(name = "customer_id")
+	private int					customerId;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="scrape_timestamp")
-	private Date scrapeTimestamp;
+	@Column(name = "scrape_timestamp")
+	private Date				scrapeTimestamp;
 
-	@Column(name="status_code")
-	private int statusCode;
+	@Column(name = "status_code")
+	private int					statusCode;
 
 	@Lob
-	@Column(name="xml_result", columnDefinition="TEXT")
-	private String xmlResult;
+	@Column(name = "xml_result", columnDefinition = "TEXT")
+	private String				xmlResult;
 
-	//bi-directional many-to-one association to Statement
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="statement_id")
-	private Statement statement;
+	// bi-directional many-to-one association to Statement
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "statement_id")
+	private Statement			statement;
 
-	public ScrapeData() {
+	public ScrapeData()
+	{
 	}
 
-	public int getScrapeDataId() {
+	public int getScrapeDataId()
+	{
 		return this.scrapeDataId;
 	}
 
-	public void setScrapeDataId(int scrapeDataId) {
+	public void setScrapeDataId(int scrapeDataId)
+	{
 		this.scrapeDataId = scrapeDataId;
 	}
 
-	public int getCustomerId() {
+	public int getCustomerId()
+	{
 		return this.customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(int customerId)
+	{
 		this.customerId = customerId;
 	}
 
-	public Date getScrapeTimestamp() {
+	public Date getScrapeTimestamp()
+	{
 		return this.scrapeTimestamp;
 	}
 
-	public void setScrapeTimestamp(Date scrapeTimestamp) {
+	public void setScrapeTimestamp(Date scrapeTimestamp)
+	{
 		this.scrapeTimestamp = scrapeTimestamp;
 	}
 
-	public int getStatusCode() {
+	public int getStatusCode()
+	{
 		return this.statusCode;
 	}
 
-	public void setStatusCode(int statusCode) {
+	public void setStatusCode(int statusCode)
+	{
 		this.statusCode = statusCode;
 	}
 
-	public Object getXmlResult() {
+	public Object getXmlResult()
+	{
 		return this.xmlResult;
 	}
 
-	public void setXmlResult(String xmlResult) {
+	public void setXmlResult(String xmlResult)
+	{
 		this.xmlResult = xmlResult;
 	}
 
-	public Statement getStatement() {
+	public Statement getStatement()
+	{
 		return this.statement;
 	}
 
-	public void setStatement(Statement statement) {
+	public void setStatement(Statement statement)
+	{
 		this.statement = statement;
 	}
 

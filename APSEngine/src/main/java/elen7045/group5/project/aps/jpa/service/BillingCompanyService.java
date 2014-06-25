@@ -15,7 +15,7 @@ public interface BillingCompanyService
 	public List<BillingCompany> findAll();
 
 	public BillingCompany findById(Integer id);
-	
+
 	public BillingCompany findByEmailAddres(String emailAddress);
 
 	public Customer update(Customer updated) throws NotFoundException;

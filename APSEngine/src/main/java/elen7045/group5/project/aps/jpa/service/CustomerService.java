@@ -14,7 +14,7 @@ public interface CustomerService
 	public List<Customer> findAll();
 
 	public Customer findById(Integer id);
-	
+
 	public Customer findByEmailAddres(String emailAddress);
 
 	public Customer update(Customer updated) throws NotFoundException;

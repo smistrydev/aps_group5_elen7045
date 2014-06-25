@@ -22,7 +22,7 @@ public class TelcoStmntBean extends StatementBean
 
 	/**
 	 * @param instalmentNotice
-	 *             - The instalmentNotice to set
+	 *            - The instalmentNotice to set
 	 */
 	public void setTelephoneNumber(String telephoneNumber)
 	{
@@ -39,7 +39,7 @@ public class TelcoStmntBean extends StatementBean
 
 	/**
 	 * @param totalNumberOfCalls
-	 *             - The totalNumberOfCalls to set
+	 *            - The totalNumberOfCalls to set
 	 */
 	public void setTotalNumberOfCalls(int totalNumberOfCalls)
 	{
@@ -56,7 +56,7 @@ public class TelcoStmntBean extends StatementBean
 
 	/**
 	 * @param totalCallDurationSeconds
-	 *             - The totalCallDurationSeconds to set
+	 *            - The totalCallDurationSeconds to set
 	 */
 	public void setTotalCallDurationSeconds(int totalCallDurationSeconds)
 	{
@@ -73,7 +73,7 @@ public class TelcoStmntBean extends StatementBean
 
 	/**
 	 * @param serviceCharges
-	 *             - The serviceCharges to set
+	 *            - The serviceCharges to set
 	 */
 	public void setServiceCharges(float serviceCharges)
 	{
@@ -90,7 +90,7 @@ public class TelcoStmntBean extends StatementBean
 
 	/**
 	 * @param callCharges
-	 *             - The callCharges to set
+	 *            - The callCharges to set
 	 */
 	public void setCallCharges(float callCharges)
 	{
