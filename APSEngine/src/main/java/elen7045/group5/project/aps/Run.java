@@ -34,6 +34,7 @@ public class Run
 		{
 			context = new AnnotationConfigApplicationContext(
 					ApplicationContext.class);
+			
 			AccountPresentationEngine accountPresentationEngine = context
 					.getBean(AccountPresentationEngine.class);
 			accountPresentationEngine.init();
