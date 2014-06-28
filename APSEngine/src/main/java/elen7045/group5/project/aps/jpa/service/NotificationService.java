@@ -16,4 +16,5 @@ public interface NotificationService
 	public Notification findById(Integer id);
 
 	public Notification update(Notification updated) throws NotFoundException;
+	
 }
