@@ -2,6 +2,7 @@
 	<base-url>www.telkom.co.za</base-url>
 	<date>10/01/2008</date>
 	<time>13:50:00</time>
+	<scrapeStatus>0000</scrapeStatus>
 	<datapair id="001">
 		<text>Account number</text>
 		<value>53111116011111</value>

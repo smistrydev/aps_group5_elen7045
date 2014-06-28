@@ -5,6 +5,7 @@
         <xs:element type="xs:anyURI" name="base-url"/>
         <xs:element type="xs:date" name="date"/>
         <xs:element type="xs:time" name="time"/>
+        <xs:element type="xs:string" name="scrapeStatus"/>
         <xs:element name="datapair" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
