@@ -1,12 +1,17 @@
 package elen7045.group5.project.aps;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 
 import elen7045.group5.project.aps.billing.BillingCompanyBean;
+import elen7045.group5.project.aps.jpa.config.ApplicationContext;
+import elen7045.group5.project.aps.jpa.model.Customer;
+import elen7045.group5.project.aps.jpa.service.CustomerService;
 import elen7045.group5.project.wsa.WebsiteScraperGateway;
 
 /**
@@ -15,15 +20,17 @@ import elen7045.group5.project.wsa.WebsiteScraperGateway;
  * companies. Each scraping operation is created as a separate thread to allow
  * concurrent scraping to occur and not to have errors at one company affect
  * another scrape.
+ * @author Robert Botes
  */
 public class AccountPresentationEngine
 {
-	private String					logDir;
 	private Logger					logger;
-
 	private WebsiteScraperGateway	gateway;
 	private BillingCompanyBean		billingCompany;
-
+	private AbstractApplicationContext applicationContext;	
+	@Autowired
+	private CustomerService	service;
+	
 	/**
 	 * Main entry point
 	 * 
@@ -53,7 +60,9 @@ public class AccountPresentationEngine
 	 */
 	void startApplication() throws IOException
 	{
-
+		Iterable<Customer> customers = service.findAll();
+		logger.info("Customer size: " + customers);
+		
 		logger.info("Get a list of all customers for the billing comany");
 
 		logger.info("go through each one and perform a scrape - perhaps this should also be threaded");
@@ -73,28 +82,6 @@ public class AccountPresentationEngine
 	{
 		// createLogDirectory();
 		logger = LoggerFactory.getLogger("APS");
-	}
-
-	/**
-	 * This creates a log directory for the agent, if it does not already exist
-	 * 
-	 * @param conf
-	 *            - Agent configuration info
-	 * @throws IOException
-	 *             - If an error occurs while creating the log directory
-	 */
-	private void createLogDirectory() throws IOException
-	{
-		this.logDir = new StringBuilder((new File(".").getCanonicalPath()))
-				.append(System.getProperty("file.separator"))
-				.append("log")
-				.append(System.getProperty("file.separator"))
-				.toString();
-
-		File dir = new File(logDir);
-		if (dir.exists() == false)
-		{
-			dir.mkdirs();
-		}
+		applicationContext = new AnnotationConfigApplicationContext(ApplicationContext.class);
 	}
 }
