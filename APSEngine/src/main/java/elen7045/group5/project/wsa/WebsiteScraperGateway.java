@@ -1,6 +1,7 @@
 package elen7045.group5.project.wsa;
 
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
+import elen7045.group5.project.aps.jpa.model.Customer;
 
 /**
  * This is used as an abstraction to a third party website scraper. This allows
@@ -21,9 +22,10 @@ public class WebsiteScraperGateway
 	 * @return Returns the XML string containing the scraped data or any errors
 	 *         encountered
 	 */
-	public String performScrape(BillingCompany billingCompany)
+	public String performScrape(BillingCompany billingCompany, Customer customer)
 	{
-		// TODO Auto-generated method stub
+		
+		
 		return null;
 	}
 }
