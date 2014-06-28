@@ -3,8 +3,8 @@ package elen7045.group5.project.notify;
 // User interface error codes
 public enum EUserInterfaceErrors
 {
-	INVALID_USER_NAME(001),
-	INVALID_USER_PASSWORD(002);
+	INVALID_USER_NAME(0001),
+	INVALID_USER_PASSWORD(0002);
 
 	private int	errorCode;
 
