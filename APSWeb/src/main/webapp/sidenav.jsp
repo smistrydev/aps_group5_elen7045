@@ -16,15 +16,15 @@
 </script>
 <nav class="side_nav">
 	<table class="table table-bordered table-hover">
-	       <tr>
-	           <td>Home</td>
-	       </tr>
-	       <tr>
-	           <td>A Menu Option</td>
-	       </tr>
-	       <tr>
-	           <td>Logoff</td>
-	       </tr>
-	  </table>
-	  <p> &nbsp;
+		<tr>
+			<td>Home</td>
+		</tr>
+		<tr>
+			<td>A Menu Option</td>
+		</tr>
+		<tr>
+			<td>Logoff</td>
+		</tr>
+	</table>
+	<p>&nbsp;
 </nav>

@@ -31,7 +31,7 @@
 	<div id="maincontainer">
 		<div id="topsection">
 			<div class="innertube">
-				<h1>APS: Login</h1>
+				<h1>APS: Home</h1>
 			</div>
 		</div>
 		<div id="contentwrapper">
@@ -42,45 +42,63 @@
 						<div class="bs-docs-section">
 							<div class="row">
 								<div class="col-lg-12">
-									<div class="page-header">
-										<h2 id="forms">Account Presentation System</h2>
+									<div class="col-lg-12">
+										<div class="page-header">
+											<h2 id="forms">Notifications</h2>
+										</div>
 									</div>
 								</div>
-							</div>
-							<p>
-							<div class="row">
-								<div class="col-lg-6">
-									<div class="well bs-component">
-										<form method="POST" action="home.jsp" class="form-horizontal">
-											<fieldset>
-												<legend>Login</legend>
-												<div class="form-group">
-													<label for="inputEmail" class="col-lg-2 control-label">Email</label>
-													<div class="col-lg-10">
-														<input type="text" class="form-control" id="inputEmail"
-															placeholder="Email">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="inputPassword" class="col-lg-2 control-label">Password</label>
-													<div class="col-lg-10">
-														<input type="password" class="form-control"
-															id="inputPassword" placeholder="Password">
+								<p>
+								<div class="row">
+									<div class="col-lg-12">
+										<table class="table table-striped table-hover ">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Notification Timestamp</th>
+													<th>Message</th>
+													<th>Acknowledge</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>20 June 2014 14:20</td>
+													<td>0001: Invalid credentials supplied to Telco.
+														Please recapture required details.</td>
+													<td>
 														<div class="checkbox">
-															<label> <input type="checkbox"> Remember
-																me
+															<label> <input type="checkbox">
 															</label>
 														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<div class="col-lg-10 col-lg-offset-2">
-														<button type="submit" class="btn btn-primary">Submit</button>
-														<button class="btn btn-default">Forgot Password</button>
-													</div>
-												</div>
-											</fieldset>
-										</form>
+													</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>22 June 2014 08:05</td>
+													<td>0003: Action required to continue eBilling. Please
+														log onto Municipality to action request.</td>
+													<td>
+														<div class="checkbox">
+															<label> <input type="checkbox">
+															</label>
+														</div>
+													</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>24 June 2014 13:45</td>
+													<td>0002: Not signed up for eBilling. The system could
+														not log into Credit Card to retrieve your statement</td>
+													<td>
+														<div class="checkbox">
+															<label> <input type="checkbox">
+															</label>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
@@ -93,9 +111,15 @@
 		<div id="leftcolumn">
 			<div class="innertube">
 				<!-- Left Column -->
-				&nbsp;
+				<nav>
+					<ul class="nav nav-pills nav-stacked span2">
+						<li><a href="home.jsp">Home</a></li>
+						<li><a href="accounts.jsp">Statement</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="index.jsp">Logout</a></li>
+					</ul>
+				</nav>
 			</div>
-
 		</div>
 
 		<div id="rightcolumn">
