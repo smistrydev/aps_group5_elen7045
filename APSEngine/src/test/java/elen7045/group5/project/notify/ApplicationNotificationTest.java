@@ -5,6 +5,8 @@ package elen7045.group5.project.notify;
 
 import static org.junit.Assert.*;
 
+import javax.xml.bind.JAXBException;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,6 +17,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import elen7045.group5.project.aps.config.ApplicationContext;
 import elen7045.group5.project.notify.service.IApplicationNotificationService;
+import elen7045.group5.project.notify.service.NotificationMessage;
+import elen7045.group5.project.notify.service.NotificationXMLUtil;
 
 /**
  * 
@@ -26,9 +30,8 @@ public class ApplicationNotificationTest
 {
 
 	@Autowired
-	IApplicationNotificationService applicationNotificationService
-	;
-	
+	IApplicationNotificationService	applicationNotificationService;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -46,44 +49,55 @@ public class ApplicationNotificationTest
 	}
 
 	/**
-	 * Test method for {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EApplicationErrors)}.
+	 * Test method for
+	 * {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EApplicationErrors)}
+	 * .
+	 * 
+	 * @throws JAXBException
 	 */
 	@Test
-	public void testXmlNotificationMessageEApplicationErrors()
+	public void testXmlNotificationMessageEApplicationErrors() throws JAXBException
 	{
-		
-		EApplicationErrors applicationErrors = EApplicationErrors.ACTION_REQUIRED_BY_BILLING_WEBSITE;
-		String xml = applicationNotificationService.xmlNotificationMessage(applicationErrors);
 
-		System.out.println(xml);
-		
+		EApplicationErrors applicationErrors = EApplicationErrors.ACTION_REQUIRED_BY_BILLING_WEBSITE;
+		String xml = applicationNotificationService.notificationMessageToXML(applicationErrors);
+
 		assertNotNull(xml);
-		
-		//fail("Not yet implemented");
+
+		NotificationMessage message = NotificationXMLUtil.fromXML(xml);
+		assertEquals("2004", message.getNotificationCode());
+		assertEquals("ACTION_REQUIRED_BY_BILLING_WEBSITE", message.getNotificationMessage());
+
 	}
 
 	/**
-	 * Test method for {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EUserInterfaceErrors)}.
+	 * Test method for
+	 * {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EUserInterfaceErrors)}
+	 * .
 	 */
-	//@Test
+	// @Test
 	public void testXmlNotificationMessageEUserInterfaceErrors()
 	{
 		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test method for {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EScrapperSchedularErrors)}.
+	 * Test method for
+	 * {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EScrapperSchedularErrors)}
+	 * .
 	 */
-	//@Test
+	// @Test
 	public void testXmlNotificationMessageEScrapperSchedularErrors()
 	{
 		fail("Not yet implemented");
 	}
 
 	/**
-	 * Test method for {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EDataErrors)}.
+	 * Test method for
+	 * {@link elen7045.group5.project.notify.service.ApplicationNotificationServiceImpl#xmlNotificationMessage(elen7045.group5.project.notify.EDataErrors)}
+	 * .
 	 */
-	//@Test
+	// @Test
 	public void testXmlNotificationMessageEDataErrors()
 	{
 		fail("Not yet implemented");

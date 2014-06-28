@@ -3,12 +3,15 @@
  */
 package elen7045.group5.project.notify.service;
 
+import java.util.Date;
+
+import javax.xml.bind.JAXBException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import elen7045.group5.project.aps.jpa.model.Notification;
 import elen7045.group5.project.aps.jpa.service.NotificationService;
-import elen7045.group5.project.notify.CreateErrorsXML;
 import elen7045.group5.project.notify.EApplicationErrors;
 import elen7045.group5.project.notify.EDataErrors;
 import elen7045.group5.project.notify.EScrapperSchedularErrors;
@@ -37,50 +40,64 @@ public class ApplicationNotificationServiceImpl implements IApplicationNotificat
 	 * @see elen7045.group5.project.notify.service.IApplicationNotificationService#xmlNotificationMessage(elen7045.group5.project.notify.EApplicationErrors)
 	 */
 	@Override
-	public String xmlNotificationMessage(EApplicationErrors errors)
+	public String notificationMessageToXML(EApplicationErrors errors)
 	{
+		Notification notification = this.notificationService.findById(errors.getErrorCode());
 
-		int errorCode = errors.getErrorCode();
-
-		Notification notification = this.notificationService.findById(errorCode);
-
-		CreateErrorsXML xmlError = new CreateErrorsXML();
-		xmlError.setErrorCode(errorCode);
-		xmlError.setErrorMessage(notification.getNotificationDescription());
-
-		String retValue = xmlError.getXMlErrorMessage();
-		
-		return retValue;
+		return this.convert(notification);
 	}
 
 	/**
 	 * @see elen7045.group5.project.notify.service.IApplicationNotificationService#xmlNotificationMessage(elen7045.group5.project.notify.EUserInterfaceErrors)
 	 */
 	@Override
-	public String xmlNotificationMessage(EUserInterfaceErrors errors)
+	public String notificationMessageToXML(EUserInterfaceErrors errors)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Notification notification = this.notificationService.findById(errors.getErrorCode());
+
+		return this.convert(notification);
 	}
 
 	/**
 	 * @see elen7045.group5.project.notify.service.IApplicationNotificationService#xmlNotificationMessage(elen7045.group5.project.notify.EScrapperSchedularErrors)
 	 */
 	@Override
-	public String xmlNotificationMessage(EScrapperSchedularErrors errors)
+	public String notificationMessageToXML(EScrapperSchedularErrors errors)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Notification notification = this.notificationService.findById(errors.getErrorCode());
+
+		return this.convert(notification);
 	}
 
 	/**
 	 * @see elen7045.group5.project.notify.service.IApplicationNotificationService#xmlNotificationMessage(elen7045.group5.project.notify.EDataErrors)
 	 */
 	@Override
-	public String xmlNotificationMessage(EDataErrors errors)
+	public String notificationMessageToXML(EDataErrors errors)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Notification notification = this.notificationService.findById(errors.getErrorCode());
+
+		return this.convert(notification);
+	}
+
+	private String convert(Notification notification)
+	{
+		NotificationMessage notificationMessage = new NotificationMessage();
+		notificationMessage.setNotificationCode(notification.getNotificationId());
+		notificationMessage.setNotificationMessage(notification.getNotificationDescription());
+		notificationMessage.setTimeStamp(new Date());
+
+		String xmlString = null;
+		try
+		{
+			xmlString = NotificationXMLUtil.toXML(notificationMessage);
+		}
+		catch (JAXBException e)
+		{
+			e.printStackTrace();
+		}
+
+		return xmlString;
 	}
 
 }

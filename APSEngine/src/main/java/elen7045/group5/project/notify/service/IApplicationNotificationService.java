@@ -15,12 +15,12 @@ import elen7045.group5.project.notify.EUserInterfaceErrors;
 public interface IApplicationNotificationService
 {
 
-	String xmlNotificationMessage(EApplicationErrors applicationErrors);
+	String notificationMessageToXML(EApplicationErrors applicationErrors);
 
-	String xmlNotificationMessage(EUserInterfaceErrors userInterfaceErrors);
+	String notificationMessageToXML(EUserInterfaceErrors userInterfaceErrors);
 
-	String xmlNotificationMessage(EScrapperSchedularErrors scrapperSchedularErrors);
+	String notificationMessageToXML(EScrapperSchedularErrors scrapperSchedularErrors);
 
-	String xmlNotificationMessage(EDataErrors dataErrors);
+	String notificationMessageToXML(EDataErrors dataErrors);
 
 }
