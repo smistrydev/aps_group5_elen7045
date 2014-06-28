@@ -18,7 +18,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = { "elen7045.group5.project.aps.jpa.service" })
+@ComponentScan(basePackages = { "elen7045.group5.project.aps.jpa.service", "elen7045.group5.project.aps" })
 @EnableTransactionManagement
 @ImportResource("classpath:applicationContext.xml")
 @PropertySource("classpath:application.properties")
