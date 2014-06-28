@@ -4,38 +4,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>Application Presentation System</display-name>
 	
-	
-	<context-param>
-      <param-name>contextClass</param-name>
-      <param-value>
-         org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-      </param-value>
-   	</context-param>
-   	<context-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>elen7045.group5.project.aps.jpa.config.ApplicationContext</param-value>
-   	</context-param>
-   	<listener>
-      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-   	</listener>
-	
-	
-	<servlet>
-		<servlet-name>RESTeasy</servlet-name>
-		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-		<init-param>
-			<param-name>javax.ws.rs.Application</param-name> 
-			<param-value>com.webservice.RESTService</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-		<enabled>true</enabled>
-	</servlet> 
-	<servlet-mapping>
-		<servlet-name>RESTeasy</servlet-name>
-		<url-pattern>/jaxrs/*</url-pattern>
-		<url-pattern>/apsrest/*</url-pattern>
-	</servlet-mapping>
-
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
@@ -48,7 +16,5 @@
         <error-code>500</error-code>
         <location>/errorPage/500.html</location>
     </error-page>
-    
- 
     
 </web-app>
