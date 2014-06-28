@@ -1,6 +1,8 @@
 package elen7045.group5.project.aps;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import elen7045.group5.project.wsa.WebsiteScraperGateway;
  * companies. Each scraping operation is created as a separate thread to allow
  * concurrent scraping to occur and not to have errors at one company affect
  * another scrape.
+ * 
  * @author Robert Botes
  */
 @Component
@@ -25,20 +28,22 @@ public class AccountPresentationEngine
 {
 	private Logger					logger;
 	private WebsiteScraperGateway	gateway;
-	private BillingCompany		billingCompany;
-	
+	private BillingCompany			billingCompany;
+
 	@Autowired
-	private CustomerService	service;
-	
+	private CustomerService			service;
+
 	/**
 	 * Method kicks off the whole process of retrieving, validating and
 	 * persisting scraped data
 	 */
 	void startApplication() throws IOException
 	{
-		Iterable<Customer> customers = service.findAll();
-		logger.info("Customer size: " + customers);
-		
+
+		List<Customer> customers = service.findAll();
+
+		logger.info("Customer size: " + customers.size());
+
 		logger.info("Get a list of all customers for the billing comany");
 
 		logger.info("go through each one and perform a scrape - perhaps this should also be threaded");
@@ -54,7 +59,7 @@ public class AccountPresentationEngine
 	/**
 	 * Initialises some required objects
 	 */
-	 void init() throws IOException
+	void init() throws IOException
 	{
 		logger = LoggerFactory.getLogger("APS");
 		gateway = new WebsiteScraperGateway();
