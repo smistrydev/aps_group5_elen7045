@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-import elen7045.group5.project.aps.billing.BillingCompanyBean;
 import elen7045.group5.project.aps.jpa.config.ApplicationContext;
+import elen7045.group5.project.aps.jpa.model.BillingCompany;
 import elen7045.group5.project.aps.jpa.model.Customer;
 import elen7045.group5.project.aps.jpa.service.CustomerService;
 import elen7045.group5.project.wsa.WebsiteScraperGateway;
@@ -26,7 +26,7 @@ public class AccountPresentationEngine
 {
 	private Logger					logger;
 	private WebsiteScraperGateway	gateway;
-	private BillingCompanyBean		billingCompany;
+	private BillingCompany		billingCompany;
 	private AbstractApplicationContext applicationContext;	
 	@Autowired
 	private CustomerService	service;
