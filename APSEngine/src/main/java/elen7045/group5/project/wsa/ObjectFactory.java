@@ -21,34 +21,30 @@ import javax.xml.bind.annotation.XmlRegistry;
  * 
  */
 @XmlRegistry
-public class ObjectFactory
-{
+public class ObjectFactory {
 
-	/**
-	 * Create a new ObjectFactory that can be used to create new instances of
-	 * schema derived classes for package: elen7045.group5.project.wsa.jaxb
-	 * 
-	 */
-	public ObjectFactory()
-	{
-	}
 
-	/**
-	 * Create an instance of {@link ScrapeSession.Datapair }
-	 * 
-	 */
-	public ScrapeSession.Datapair createScrapeSessionDatapair()
-	{
-		return new ScrapeSession.Datapair();
-	}
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: generated
+     * 
+     */
+    public ObjectFactory() {
+    }
 
-	/**
-	 * Create an instance of {@link ScrapeSession }
-	 * 
-	 */
-	public ScrapeSession createScrapeSession()
-	{
-		return new ScrapeSession();
-	}
+    /**
+     * Create an instance of {@link ScrapeSession }
+     * 
+     */
+    public ScrapeSession createScrapeSession() {
+        return new ScrapeSession();
+    }
+
+    /**
+     * Create an instance of {@link ScrapeSession.Datapair }
+     * 
+     */
+    public ScrapeSession.Datapair createScrapeSessionDatapair() {
+        return new ScrapeSession.Datapair();
+    }
 
 }
