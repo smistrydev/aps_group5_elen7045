@@ -80,8 +80,8 @@ public class AccountPresentationEngine
 	 */
 	private void init() throws IOException
 	{
-		// createLogDirectory();
 		logger = LoggerFactory.getLogger("APS");
 		applicationContext = new AnnotationConfigApplicationContext(ApplicationContext.class);
+		gateway = new WebsiteScraperGateway();
 	}
 }
