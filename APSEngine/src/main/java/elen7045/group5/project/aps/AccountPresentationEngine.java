@@ -26,34 +26,10 @@ public class AccountPresentationEngine
 	private Logger					logger;
 	private WebsiteScraperGateway	gateway;
 	private BillingCompany		billingCompany;
-//	private AbstractApplicationContext applicationContext;	
 	
 	@Autowired
 	private CustomerService	service;
 	
-//	/**
-//	 * Main entry point
-//	 * 
-//	 * @param args
-//	 *            - Command line arguments
-//	 */
-//	public static void main(String[] args)
-//	{
-//		try
-//		{
-//			AccountPresentationEngine ape = new AccountPresentationEngine();
-//			ape.init();
-//			ape.startApplication();
-//		}
-//		catch (Exception e)
-//		{
-//			e.printStackTrace();
-//			System.exit(-1);
-//		}
-//
-//		System.exit(0);
-//	}
-
 	/**
 	 * Method kicks off the whole process of retrieving, validating and
 	 * persisting scraped data
@@ -81,7 +57,6 @@ public class AccountPresentationEngine
 	 void init() throws IOException
 	{
 		logger = LoggerFactory.getLogger("APS");
-//		applicationContext = new AnnotationConfigApplicationContext(ApplicationContext.class);
 		gateway = new WebsiteScraperGateway();
 	}
 }
