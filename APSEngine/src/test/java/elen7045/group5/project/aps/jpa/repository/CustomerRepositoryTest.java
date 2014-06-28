@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import elen7045.group5.project.aps.jpa.config.ApplicationContext;
+import elen7045.group5.project.aps.config.ApplicationContext;
 import elen7045.group5.project.aps.jpa.model.Customer;
 import elen7045.group5.project.aps.jpa.service.CustomerService;
 

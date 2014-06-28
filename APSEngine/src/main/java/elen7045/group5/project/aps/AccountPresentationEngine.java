@@ -5,10 +5,8 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.stereotype.Component;
 
-import elen7045.group5.project.aps.jpa.config.ApplicationContext;
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
 import elen7045.group5.project.aps.jpa.model.Customer;
 import elen7045.group5.project.aps.jpa.service.CustomerService;
@@ -22,37 +20,39 @@ import elen7045.group5.project.wsa.WebsiteScraperGateway;
  * another scrape.
  * @author Robert Botes
  */
+@Component
 public class AccountPresentationEngine
 {
 	private Logger					logger;
 	private WebsiteScraperGateway	gateway;
 	private BillingCompany		billingCompany;
-	private AbstractApplicationContext applicationContext;	
+//	private AbstractApplicationContext applicationContext;	
+	
 	@Autowired
 	private CustomerService	service;
 	
-	/**
-	 * Main entry point
-	 * 
-	 * @param args
-	 *            - Command line arguments
-	 */
-	public static void main(String[] args)
-	{
-		try
-		{
-			AccountPresentationEngine ape = new AccountPresentationEngine();
-			ape.init();
-			ape.startApplication();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			System.exit(-1);
-		}
-
-		System.exit(0);
-	}
+//	/**
+//	 * Main entry point
+//	 * 
+//	 * @param args
+//	 *            - Command line arguments
+//	 */
+//	public static void main(String[] args)
+//	{
+//		try
+//		{
+//			AccountPresentationEngine ape = new AccountPresentationEngine();
+//			ape.init();
+//			ape.startApplication();
+//		}
+//		catch (Exception e)
+//		{
+//			e.printStackTrace();
+//			System.exit(-1);
+//		}
+//
+//		System.exit(0);
+//	}
 
 	/**
 	 * Method kicks off the whole process of retrieving, validating and
@@ -78,10 +78,10 @@ public class AccountPresentationEngine
 	/**
 	 * Initialises some required objects
 	 */
-	private void init() throws IOException
+	 void init() throws IOException
 	{
 		logger = LoggerFactory.getLogger("APS");
-		applicationContext = new AnnotationConfigApplicationContext(ApplicationContext.class);
+//		applicationContext = new AnnotationConfigApplicationContext(ApplicationContext.class);
 		gateway = new WebsiteScraperGateway();
 	}
 }
