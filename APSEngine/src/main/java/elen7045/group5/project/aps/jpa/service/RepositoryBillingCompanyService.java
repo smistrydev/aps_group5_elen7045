@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import elen7045.group5.project.aps.jpa.model.AuditLog;
+import elen7045.group5.project.aps.jpa.model.BillingCompany;
 import elen7045.group5.project.aps.jpa.repository.AuditLogRepository;
+import elen7045.group5.project.aps.jpa.repository.BillingCompanyRepository;
 
 @Service
-public class RepositoryBillingCompanyService implements AuditLogService
+public class RepositoryBillingCompanyService implements BillingCompanyService
 {
 
 	@Resource
@@ -19,14 +21,14 @@ public class RepositoryBillingCompanyService implements AuditLogService
 
 	@Transactional
 	@Override
-	public AuditLog create(AuditLog created)
+	public BillingCompany create(BillingCompany created)
 	{
 		return repository.save(created);
 	}
 
 	@Transactional(rollbackFor = NotFoundException.class)
 	@Override
-	public AuditLog delete(int id) throws NotFoundException
+	public BillingCompany delete(int id) throws NotFoundException
 	{
 		AuditLog deleted = repository.findOne(id);
 
@@ -42,23 +44,23 @@ public class RepositoryBillingCompanyService implements AuditLogService
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<AuditLog> findAll()
+	public List<BillingCompany> findAll()
 	{
 		return repository.findAll();
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public AuditLog findById(Integer id)
+	public BillingCompany findById(Integer id)
 	{
 		return repository.findOne(id);
 	}
 
 	@Transactional(rollbackFor = NotFoundException.class)
 	@Override
-	public AuditLog update(AuditLog updated) throws NotFoundException
+	public BillingCompany update(BillingCompany updated) throws NotFoundException
 	{
-		AuditLog original = repository.findOne(updated.getAuditLogId());
+		BillingCompany original = repository.findOne(updated.getAuditLogId());
 
 		if (original == null)
 		{
@@ -70,7 +72,7 @@ public class RepositoryBillingCompanyService implements AuditLogService
 		return original;
 	}
 
-	public void setAuditLogRepository(AuditLogRepository repository)
+	public void setBillingCompanyRepository(BillingCompanyRepository repository)
 	{
 		this.repository = repository;
 	}

@@ -9,20 +9,12 @@ import org.springframework.context.support.AbstractApplicationContext;
 import elen7045.group5.project.aps.config.ApplicationContext;
 
 /**
+ * Main entry point into the component that does the scraping operations
  * 
  * @author Sanjay Mistry
  */
 public class Run
 {
-
-	/**
-	 * 
-	 */
-	public Run()
-	{
-		// TODO Auto-generated constructor stub
-	}
-
 	/**
 	 * @param args
 	 */
@@ -34,10 +26,9 @@ public class Run
 		{
 			context = new AnnotationConfigApplicationContext(
 					ApplicationContext.class);
-			
+
 			AccountPresentationEngine accountPresentationEngine = context
 					.getBean(AccountPresentationEngine.class);
-			accountPresentationEngine.init();
 			accountPresentationEngine.startApplication();
 		}
 		catch (Exception e)
@@ -51,7 +42,5 @@ public class Run
 		}
 
 		System.exit(0);
-
 	}
-
 }
