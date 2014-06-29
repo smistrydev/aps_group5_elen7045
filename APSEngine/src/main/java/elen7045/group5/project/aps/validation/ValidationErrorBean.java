@@ -16,21 +16,23 @@ public class ValidationErrorBean implements Serializable
 	private String scrapeErrorField;
 	
 	/**
+	 * Constructor creates the object with an error and where the error occurred
+	 * @param error
+	 * @param errorField
+	 */
+	public ValidationErrorBean(EDataErrors error, String errorField)
+	{
+		this.errorCode = error;
+		this.scrapeErrorField = errorField;
+	}	
+	
+	/**
 	 * Code representing the error encountered
 	 * @return
 	 */
 	public EDataErrors getErrorCode()
 	{
 		return errorCode;
-	}
-	
-	/**
-	 * Code representing the error encountered
-	 * @param errorCode
-	 */
-	public void setErrorCode(EDataErrors errorCode)
-	{
-		this.errorCode = errorCode;
 	}
 	
 	/**
@@ -42,14 +44,4 @@ public class ValidationErrorBean implements Serializable
 	{
 		return scrapeErrorField;
 	}
-	
-	/**
-	 * This is the field in the scrape session that contains the error so
-	 * we can identify what to fix
-	 * @param scrapeErrorField
-	 */
-	public void setScrapeErrorField(String scrapeErrorField)
-	{
-		this.scrapeErrorField = scrapeErrorField;
-	}	
 }

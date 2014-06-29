@@ -28,7 +28,7 @@ public abstract class Validator
 	 * @return Returns a list of errors that exist within the application, an empty list if
 	 * there were none
 	 */
-	protected abstract List<EDataErrors> performCaseSpecificValidation(ScrapeSession scrape);	
+	protected abstract List<ValidationErrorBean> performCaseSpecificValidation(ScrapeSession scrape);	
 
 	/**
 	 * Returns the model that was set for this validator
@@ -45,7 +45,7 @@ public abstract class Validator
 	 * @return Returns a list of errors contained in the scrape data, an empty list if there were
 	 * none.
 	 */
-	public List<EDataErrors> performValidation(ScrapeSession scrape)
+	public List<ValidationErrorBean> performValidation(ScrapeSession scrape)
 	{
 		int statementNumber = 0;
 		float openingBalance = 0.0F, 
@@ -64,8 +64,8 @@ public abstract class Validator
 
 		// run through all the data pairs and if you get an exception
 		// add the error code to it
-		List<EDataErrors> validList = new ArrayList<EDataErrors>();
-		List<EDataErrors> typeSpecificValidList = new ArrayList<EDataErrors>();
+		List<ValidationErrorBean> validList = new ArrayList<ValidationErrorBean>();
+		List<ValidationErrorBean> typeSpecificValidList = new ArrayList<ValidationErrorBean>();
 		
 		List<ScrapeSession.Datapair> dataPairList = scrape.getDatapair();
 		for (ScrapeSession.Datapair dataPair : dataPairList)
@@ -79,21 +79,21 @@ public abstract class Validator
 			{
 				totalDue = Integer.parseInt(dataPair.getValue());
 				if (totalDue < 0)
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("Deductions"))
 			{
 				deductions = Integer.parseInt(dataPair.getValue());
 				if (deductions < 0)
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("New charges"))
 			{
 				newCharges = Integer.parseInt(dataPair.getValue());
 				if (newCharges < 0)
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 				// No test relates to this field
 			}
 
@@ -101,14 +101,14 @@ public abstract class Validator
 			{
 				paymentsRecieved = Integer.parseInt(dataPair.getValue());
 				if (paymentsRecieved < 0)
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("Discount"))
 			{
 				discount = Integer.parseInt(dataPair.getValue());
 				if (discount < 0)
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("Opening balance"))
@@ -119,7 +119,7 @@ public abstract class Validator
 				}
 				catch (Exception e)
 				{
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 				}
 			}
 
@@ -131,7 +131,7 @@ public abstract class Validator
 				}
 				catch (Exception e)
 				{
-					validList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					validList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 				}
 			}
 
@@ -139,12 +139,12 @@ public abstract class Validator
 								- newCharges + discount + deductions;
 			if (totalDue != actualTotal)
 			{
-				validList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION);
+				validList.add(new ValidationErrorBean(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION, dataPair.getText()));
 			}
 
 			if (openingBalance - totalDue != closingBalance)
 			{
-				validList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION);
+				validList.add(new ValidationErrorBean(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION, dataPair.getText()));
 			}
 		}
 

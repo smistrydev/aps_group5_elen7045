@@ -24,9 +24,9 @@ public class MunicipleValidator extends Validator
 	/**
 	 * @see elen7045.group5.project.aps.validator.Validator#performCaseSpecificValidation(elen7045.group5.project.wsa.ScrapeSession)
 	 */
-	protected List<EDataErrors> performCaseSpecificValidation(ScrapeSession scrapeData)
+	protected List<ValidationErrorBean> performCaseSpecificValidation(ScrapeSession scrapeData)
 	{
-		List<EDataErrors> municipleValidList = new ArrayList<EDataErrors>();
+		List<ValidationErrorBean> municipleValidList = new ArrayList<ValidationErrorBean>();
 		List<ScrapeSession.Datapair> dataPairList = scrapeData.getDatapair();
 				
 		float	electricityCharges = 0.0F,
@@ -42,46 +42,46 @@ public class MunicipleValidator extends Validator
 			{
 				electricityCharges = Integer.parseInt(dataPair.getValue());
 				if (electricityCharges < 0)
-					municipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					municipleValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 			
 			if (dataPair.getText().equals("Gas charges"))
 			{
 				gasCharges = Integer.parseInt(dataPair.getValue());
 				if (gasCharges < 0)
-					municipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					municipleValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 			
 			if (dataPair.getText().equals("Sewerage charges"))
 			{
 				sewerageCharges = Integer.parseInt(dataPair.getValue());
 				if (sewerageCharges < 0)
-					municipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					municipleValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 			
 			if (dataPair.getText().equals("Water charges"))
 			{
 				waterCharges = Integer.parseInt(dataPair.getValue());
 				if (waterCharges < 0)
-					municipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					municipleValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 			
 			if (dataPair.getText().equals("Refuse charges"))
 			{
 				refuseCharges = Integer.parseInt(dataPair.getValue());
 				if (refuseCharges < 0)
-					municipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					municipleValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 			
 			if (dataPair.getText().equals("New Charges"))
 			{
 				newCharges = Integer.parseInt(dataPair.getValue());
 				if (newCharges < 0)
-					municipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					municipleValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 			
 			if (newCharges-electricityCharges-gasCharges-waterCharges-sewerageCharges-refuseCharges!=0)
-				municipleValidList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION);
+				municipleValidList.add(new ValidationErrorBean(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION, dataPair.getText()));
 		}
 		
 		return municipleValidList;

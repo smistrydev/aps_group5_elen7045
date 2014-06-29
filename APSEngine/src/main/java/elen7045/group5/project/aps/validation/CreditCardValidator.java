@@ -22,9 +22,9 @@ public class CreditCardValidator extends Validator
 	/**
 	 * @see elen7045.group5.project.aps.validator.Validator#performCaseSpecificValidation(elen7045.group5.project.wsa.ScrapeSession)
 	 */
-	protected List<EDataErrors> performCaseSpecificValidation(ScrapeSession scrape)
+	protected List<ValidationErrorBean> performCaseSpecificValidation(ScrapeSession scrape)
 	{
-		List<EDataErrors> creditCardValidList = new ArrayList<EDataErrors>();
+		List<ValidationErrorBean> creditCardValidList = new ArrayList<ValidationErrorBean>();
 		List<ScrapeSession.Datapair> dataPairList = scrape.getDatapair();
 
 		for (ScrapeSession.Datapair dataPair : dataPairList)
@@ -33,18 +33,18 @@ public class CreditCardValidator extends Validator
 			{
 				minimumAmountDue = Integer.parseInt(dataPair.getValue());
 				if (minimumAmountDue < 0)
-					creditCardValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					creditCardValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("New charges"))
 			{
 				newCharges = Integer.parseInt(dataPair.getValue());
 				if (newCharges < 0.0)
-					creditCardValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					creditCardValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (minimumAmountDue != newCharges)
-				creditCardValidList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION);
+				creditCardValidList.add(new ValidationErrorBean(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION, dataPair.getText()));
 		}
 
 		return creditCardValidList;

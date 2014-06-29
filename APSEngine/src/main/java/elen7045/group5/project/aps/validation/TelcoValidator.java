@@ -22,9 +22,9 @@ public class TelcoValidator extends Validator
 	/**
 	 * @see elen7045.group5.project.aps.validator.Validator#performCaseSpecificValidation(elen7045.group5.project.wsa.ScrapeSession)
 	 */
-	protected List<EDataErrors> performCaseSpecificValidation(ScrapeSession scrapeData)
+	protected List<ValidationErrorBean> performCaseSpecificValidation(ScrapeSession scrapeData)
 	{
-		List<EDataErrors> telcoValidList = new ArrayList<EDataErrors>();
+		List<ValidationErrorBean> telcoValidList = new ArrayList<ValidationErrorBean>();
 		List<ScrapeSession.Datapair> dataPairList = scrapeData.getDatapair();
 
 		float serviceCharges = 0.0F, 
@@ -37,31 +37,31 @@ public class TelcoValidator extends Validator
 			{
 				serviceCharges = Integer.parseInt(dataPair.getValue());
 				if (serviceCharges < 0)
-					telcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					telcoValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("Call charges"))
 			{
 				callCharges = Integer.parseInt(dataPair.getValue());
 				if (callCharges < 0)
-					telcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					telcoValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("New Charges"))
 			{
 				newCharges = Integer.parseInt(dataPair.getValue());
 				if (newCharges < 0)
-					telcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					telcoValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (dataPair.getText().equals("Telephone number"))
 			{
 				if (dataPair.getValue().toString().length() != 10)
-					telcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING);
+					telcoValidList.add(new ValidationErrorBean(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING, dataPair.getText()));
 			}
 
 			if (newCharges - serviceCharges - callCharges != 0)
-				telcoValidList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION);
+				telcoValidList.add(new ValidationErrorBean(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION, dataPair.getText()));
 
 		}
 		
