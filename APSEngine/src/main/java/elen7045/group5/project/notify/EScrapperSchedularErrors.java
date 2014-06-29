@@ -3,7 +3,7 @@ package elen7045.group5.project.notify;
 public enum EScrapperSchedularErrors
 {
 	SCHEDULER_SCRAPPER_FAILED(3001),
-	SCHEDUKER_REACHED_MAXIMUM_RETRIES(3002);
+	SCHEDULER_REACHED_MAXIMUM_RETRIES(3002);
 
 	private int	errorCode;
 
