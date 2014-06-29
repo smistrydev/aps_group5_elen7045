@@ -193,9 +193,9 @@ CREATE TABLE `maintenance_window` (
 
 LOCK TABLES `maintenance_window` WRITE;
 /*!40000 ALTER TABLE `maintenance_window` DISABLE KEYS */;
+INSERT INTO `maintenance_window` VALUES (1,'0','2','*','*','*',1),(2,'0','2','*','*','*',2),(3,'0','2','*','*','*',3);
 /*!40000 ALTER TABLE `maintenance_window` ENABLE KEYS */;
 UNLOCK TABLES;
-
 --
 -- Table structure for table `municipal_provider`
 --
