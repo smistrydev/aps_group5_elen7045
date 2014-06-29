@@ -52,12 +52,6 @@ public class WSAScrapeTest
 		assertNotNull(scrapeSession);
 		assertEquals("www.telkom.co.za", scrapeSession.getBaseUrl());
 
-		// Get Given Data: BillingCompany & Customer,
-
-		// Then run test at scheduled time
-
-		// Scrape Data
-
 	}
 
 	@Test
@@ -72,38 +66,21 @@ public class WSAScrapeTest
 		assertNotNull(scrapeSession);
 		assertEquals("www.edgars.co.za", scrapeSession.getBaseUrl());
 
-		// Get Given Data: BillingCompany & Customer,
-
-		// Then run test at scheduled time
-
-		// Scrape Data
-
 	}
 
 	@Test
 	public void testSuccessfulScrapeMunicipalStatement() throws IOException, JAXBException
 	{
-		String path = ClassLoader.getSystemClassLoader()
-				.getResource("elen7045/group5/project/wsa/xml/municipal/Municipality.xml")
-				.getFile();
 		InputStream is = ClassLoader.getSystemClassLoader()
 				.getResource("elen7045/group5/project/wsa/xml/municipal/Municipality.xml")
 				.openStream();
 
-		System.out.println(">>>>" + path);
-		
 		ScrapeSession scrapeSession = ScrapeSessionXMLUtil.fromXML(is);
 		
 		is.close();
 
 		assertNotNull(scrapeSession);
 		assertEquals("www.cityofjoburg.org.za", scrapeSession.getBaseUrl());
-
-		// Get Given Data: BillingCompany & Customer,
-
-		// Then run test at scheduled time
-
-		// Scrape Data
 
 	}
 

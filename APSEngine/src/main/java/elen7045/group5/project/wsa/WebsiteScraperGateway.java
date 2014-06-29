@@ -1,5 +1,10 @@
 package elen7045.group5.project.wsa;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.xml.bind.JAXBException;
+
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
 import elen7045.group5.project.aps.jpa.model.Customer;
 
@@ -12,6 +17,7 @@ import elen7045.group5.project.aps.jpa.model.Customer;
  */
 public class WebsiteScraperGateway
 {
+
 	/**
 	 * This method will perform a scrape by logging onto the company contained
 	 * in the passed bean using the customer's details and retrieve the
@@ -21,11 +27,41 @@ public class WebsiteScraperGateway
 	 *            - Bean containing all the required data to perform a scrape
 	 * @return Returns the XML string containing the scraped data or any errors
 	 *         encountered
+	 * @throws IOException
+	 * @throws JAXBException
 	 */
 	public String performScrape(BillingCompany billingCompany, Customer customer)
+			throws IOException, JAXBException
 	{
-		
-		
-		return null;
+
+		String companyURL = billingCompany.getUrl();
+
+		InputStream is = null;
+
+		if (companyURL.equalsIgnoreCase("www.edgars.co.za"))
+		{
+			is = ClassLoader.getSystemClassLoader()
+					.getResource("elen7045/group5/project/wsa/xml/credit_card/CreditCard.xml")
+					.openStream();
+
+		}
+		else if (companyURL.equalsIgnoreCase("www.cityofjoburg.co.za"))
+		{
+			is = ClassLoader.getSystemClassLoader()
+					.getResource("elen7045/group5/project/wsa/xml/credit_card/CreditCard.xml")
+					.openStream();
+
+		}
+		else if (companyURL.equalsIgnoreCase("www.telkom.co.za"))
+		{
+			is = ClassLoader.getSystemClassLoader()
+					.getResource("elen7045/group5/project/wsa/xml/credit_card/CreditCard.xml")
+					.openStream();
+
+		}
+
+		ScrapeSession scrapeSession = ScrapeSessionXMLUtil.fromXML(is);
+
+		return ScrapeSessionXMLUtil.toXML(scrapeSession);
 	}
 }
