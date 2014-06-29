@@ -2,7 +2,7 @@ public class TelcoValidator extends Validator{
 List<EDataErrors> TelcoValidList = new ArrayList<EDataErrors>();
 
 TelcoValidator(){
-super(EValidatorTypes.Municiple);
+super(EValidatorTypes.Telco);
 construct();
 }
 
