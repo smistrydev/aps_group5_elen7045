@@ -7,9 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import elen7045.group5.project.aps.jpa.model.AuditLog;
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
-import elen7045.group5.project.aps.jpa.repository.AuditLogRepository;
 import elen7045.group5.project.aps.jpa.repository.BillingCompanyRepository;
 
 @Service
@@ -17,7 +15,7 @@ public class RepositoryBillingCompanyService implements BillingCompanyService
 {
 
 	@Resource
-	private AuditLogRepository	repository;
+	private BillingCompanyRepository	repository;
 
 	@Transactional
 	@Override
@@ -30,7 +28,7 @@ public class RepositoryBillingCompanyService implements BillingCompanyService
 	@Override
 	public BillingCompany delete(int id) throws NotFoundException
 	{
-		AuditLog deleted = repository.findOne(id);
+		BillingCompany deleted = repository.findOne(id);
 
 		if (deleted == null)
 		{
@@ -60,14 +58,19 @@ public class RepositoryBillingCompanyService implements BillingCompanyService
 	@Override
 	public BillingCompany update(BillingCompany updated) throws NotFoundException
 	{
-		BillingCompany original = repository.findOne(updated.getAuditLogId());
+		BillingCompany original = repository.findOne(updated.getBillingCompanyId());
 
 		if (original == null)
 		{
 			throw new NotFoundException();
 		}
 
-		original.setAcknowledged(updated.getAcknowledged());
+		original.setBillingCompanyName(updated.getBillingCompanyName());
+		original.setDaysPerCycle(updated.getDaysPerCycle());
+		original.setLeadTimeDays(updated.getLeadTimeDays());
+		original.setRetryCount(updated.getRetryCount());
+		original.setRetryIntervalMinutes(updated.getRetryCount());
+		original.setUrl(updated.getUrl());
 
 		return original;
 	}
