@@ -1,5 +1,5 @@
 public class TelcoValidator extends Validator{
-
+List<EDataErrors> TelcoValidList = new ArrayList<EDataErrors>();
 
 TelcoValidator(){
 super(EValidatorTypes.Municiple);
@@ -9,7 +9,7 @@ construct();
 @Override
 protected List<EDataErrors> PerformCaseSpecificValidation(int newcharges)
 {
-	List<EDataErrors> TelcoValidList = new ArrayList<EDataErrors>();
+	
 	List<ScrapeSession.Datapair> dataPairList = scrape.getDatapair();
 	
 	int serviceCharges,
@@ -22,39 +22,43 @@ protected List<EDataErrors> PerformCaseSpecificValidation(int newcharges)
 		{
 			serviceCharges = Integer.parseInt(dataPair.getValue());
 			if (serviceCharges < 0)
-				MunicipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
+				TelcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
 		}
 		
 		if (dataPair.getText().equals("Call charges"))
 		{
 			callCharges = Integer.parseInt(dataPair.getValue());
 			if (callCharges < 0)
-				MunicipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
+				TelcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
 		}
 		
 		if (dataPair.getText().equals("New Charges"))
 		{
 			newCharges = Integer.parseInt(dataPair.getValue());
 			if (newCharges < 0)
-				MunicipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
+				TelcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
 		}
 		
 		
 		if (dataPair.getText().equals("Telephone number"))
 		{
 			if (dataPair.getValue().toString().length()!=10)
-				MunicipleValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
+				TelcoValidList.add(EDataErrors.DATA_FAILS_INTEGRITY_CHECKING(1005));
 		}
 		
 		
-		if(newCharges-serviceCharges-callCharges!=0)
-			MunicipleList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION(1001));
+		authenticateCharges(newcharges, serviceCharges, callcharges,)
 
 		
 	}	
 
 }
 
+private void authenticateCharges(int newcharge, int servicecharge, int callcharge)
+{
+	if(newCharges-serviceCharges-callCharges!=0)
+		TelcoValidList.add(EDataErrors.INCORRECT_TOTAL_DUE_CALCULATION(1001));
+}
 
 
 
