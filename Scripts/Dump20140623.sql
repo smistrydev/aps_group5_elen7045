@@ -105,7 +105,7 @@ CREATE TABLE `billing_company` (
 
 LOCK TABLES `billing_company` WRITE;
 /*!40000 ALTER TABLE `billing_company` DISABLE KEYS */;
-INSERT INTO `billing_company` VALUES (1,'Credit Card',1,'www.telkom.co.za',1,1,1),(2,'Municipality',1,'www.telkom.co.za',1,1,1),(3,'Telco',1,'www.telkom.co.za',1,1,1);
+INSERT INTO `billing_company` VALUES (1,'Credit Card',1,'www.edgars.co.za',1,1,1),(2,'Municipality',1,'www.cityofjoburg.org.za',1,1,1),(3,'Telco',1,'www.telkom.co.za',1,1,1);
 /*!40000 ALTER TABLE `billing_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
