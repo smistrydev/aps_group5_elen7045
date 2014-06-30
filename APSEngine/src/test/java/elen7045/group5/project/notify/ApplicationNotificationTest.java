@@ -22,7 +22,7 @@ import elen7045.group5.project.notify.service.NotificationXMLUtil;
 
 /**
  * 
- * @author Sanjay Mistry
+ *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationContext.class })
