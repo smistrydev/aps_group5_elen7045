@@ -1,5 +1,6 @@
 package elen7045.group5.project.wsa;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
 
@@ -8,6 +9,10 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+/**
+ * Utility class created to marshall and unmarshall XML to and from the
+ * {@link ScrapeSession} object
+ */
 public class ScrapeSessionXMLUtil
 {
 
@@ -22,6 +27,12 @@ public class ScrapeSessionXMLUtil
 		String result = stringWriter.toString();
 		return result;
 
+	}
+	
+	public static ScrapeSession fromXML(String xml) throws JAXBException
+	{
+		ByteArrayInputStream bais = new ByteArrayInputStream(xml.getBytes());
+		return fromXML(bais);
 	}
 
 	public static ScrapeSession fromXML(InputStream inputStream) throws JAXBException
