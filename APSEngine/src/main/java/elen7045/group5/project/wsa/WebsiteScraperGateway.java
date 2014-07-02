@@ -1,10 +1,6 @@
 package elen7045.group5.project.wsa;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-
-import javax.xml.bind.JAXBException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,8 +56,10 @@ public class WebsiteScraperGateway
 						.openStream();
 			}
 	
-			BufferedInputStream bis = new BufferedInputStream(is);
-			//while(bis.read()
+			ScrapeSession scrapeSession = ScrapeSessionXMLUtil.fromXML(is);
+
+			return ScrapeSessionXMLUtil.toXML(scrapeSession);
+			
 		}
 		catch(Exception e) //covers IOException & JAXBException
 		{

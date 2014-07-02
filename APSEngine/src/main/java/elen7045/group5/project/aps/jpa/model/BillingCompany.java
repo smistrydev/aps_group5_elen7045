@@ -37,7 +37,7 @@ public class BillingCompany implements Serializable
 	private String					url;
 
 	// bi-directional many-to-one association to Account
-	@OneToMany(mappedBy = "billingCompany")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy = "billingCompany")
 	private List<Account>			accounts;
 
 	// bi-directional many-to-one association to MaintenanceWindow
