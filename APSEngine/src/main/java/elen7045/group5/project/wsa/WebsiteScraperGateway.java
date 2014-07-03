@@ -42,6 +42,8 @@ public class WebsiteScraperGateway
 		String plainPassword = apsEncryptor.decrypt(encrptedPassword);
 		customerAcc.setCustomerLoginPassword(plainPassword);
 
+		
+		// Below code is simply immulating as if a real 3rd party wedsite scrapper was called and responded.
 		try
 		{
 			if (companyURL.equalsIgnoreCase("www.edgars.co.za"))
