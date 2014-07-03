@@ -11,7 +11,7 @@ public class SecureAPSEncryptorTest
 	@Test
 	public void testEncrypt()
 	{
-		final String salt = "balh8Blah";
+		final String salt = "apsSalt";
 		SecureAPSEncryptor apsEncryptor = new SecureAPSEncryptor(salt);
 
 		String message = "Some Secret Message 123";
@@ -27,7 +27,7 @@ public class SecureAPSEncryptorTest
 	@Test
 	public void testDecrypt()
 	{
-		final String salt = "balh8Blah";
+		final String salt = "apsSalt";
 		SecureAPSEncryptor apsEncryptor = new SecureAPSEncryptor(salt);
 
 		String message = "Some Secret Message 123";
@@ -40,10 +40,10 @@ public class SecureAPSEncryptorTest
 	@Test
 	public void testCheck()
 	{
-		final String salt = "balh8Blah";
+		final String salt = "apsSalt";
 		SecureAPSEncryptor apsEncryptor = new SecureAPSEncryptor(salt);
 
-		String message = "Some Secret Message 123";
+		String message = "password";
 
 		String encryptedMsg = apsEncryptor.encrypt(message);
 		assertTrue(apsEncryptor.check(message, encryptedMsg));

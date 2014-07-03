@@ -15,7 +15,7 @@ public class PasswordAPSEncryptorTest
 	{
 		PasswordAPSEncryptor apsEncryptor = new PasswordAPSEncryptor();
 
-		String password = "Th#sIs@Fu&nyPass01";
+		String password = "test";
 		String encryptedPass = apsEncryptor.encrypt(password);
 
 		assertNotNull(encryptedPass);

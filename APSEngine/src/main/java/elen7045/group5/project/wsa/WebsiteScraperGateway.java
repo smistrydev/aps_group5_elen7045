@@ -5,6 +5,7 @@ import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import elen7045.group5.project.aps.config.APSAuditLog;
 import elen7045.group5.project.aps.encrypt.service.SecureAPSEncryptor;
 import elen7045.group5.project.aps.jpa.model.Account;
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
@@ -31,6 +32,7 @@ public class WebsiteScraperGateway
 	 * @return Returns the XML string containing the scraped data or any errors
 	 *         encountered
 	 */
+	@APSAuditLog
 	public String performScrape(BillingCompany billingCompany, Account customerAcc)
 	{
 		InputStream is = null;

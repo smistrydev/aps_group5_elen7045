@@ -91,5 +91,12 @@ public class ApplicationContext
 
 		return entityManagerFactoryBean;
 	}
+	
+	@Bean
+	public LoggingAspect loggingAspect() throws ClassNotFoundException {
+		LoggingAspect loggingAspect = new LoggingAspect();
+		return loggingAspect;
+	}
+
 
 }
