@@ -43,7 +43,7 @@ public class NotificationRepositoryTest
 	public void testNotificationGetOne()
 	{
 
-		Integer testId = new Integer(3);
+		Integer testId = new Integer(2);
 		Notification notification = notificationService.findById(testId);
 
 		assertNotNull(notification);
