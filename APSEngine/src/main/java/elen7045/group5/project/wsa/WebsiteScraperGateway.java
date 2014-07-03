@@ -5,6 +5,7 @@ import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import elen7045.group5.project.aps.encrypt.service.SecureAPSEncryptor;
 import elen7045.group5.project.aps.jpa.model.Account;
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
 
@@ -17,7 +18,8 @@ import elen7045.group5.project.aps.jpa.model.BillingCompany;
  */
 public class WebsiteScraperGateway
 {
-	private Logger logger = LoggerFactory.getLogger("APS");
+	private Logger				logger			= LoggerFactory.getLogger("APS");
+	private SecureAPSEncryptor	apsEncryptor	= new SecureAPSEncryptor("apsSalt");
 
 	/**
 	 * This method will perform a scrape by logging onto the company contained
@@ -34,9 +36,14 @@ public class WebsiteScraperGateway
 		InputStream is = null;
 		String companyURL = billingCompany.getUrl();
 		logger.info("Scrape called for company " + companyURL);
-		
+
+		// The password is decrypted here.
+		String encrptedPassword = customerAcc.getCustomerLoginPassword();
+		String plainPassword = apsEncryptor.decrypt(encrptedPassword);
+		customerAcc.setCustomerLoginPassword(plainPassword);
+
 		try
-		{	
+		{
 			if (companyURL.equalsIgnoreCase("www.edgars.co.za"))
 			{
 				is = ClassLoader.getSystemClassLoader()
@@ -55,17 +62,23 @@ public class WebsiteScraperGateway
 						.getResource("elen7045/group5/project/wsa/xml/credit_card/CreditCard.xml")
 						.openStream();
 			}
-	
+
 			ScrapeSession scrapeSession = ScrapeSessionXMLUtil.fromXML(is);
 
 			return ScrapeSessionXMLUtil.toXML(scrapeSession);
-			
+
 		}
-		catch(Exception e) //covers IOException & JAXBException
+		catch (Exception e) // covers IOException & JAXBException
 		{
 			logger.error("Error performing scrape: " + e.toString());
 		}
-		
+		finally
+		{
+			//the plain text password gets discarded.
+			plainPassword = null;
+			customerAcc.setCustomerLoginPassword(encrptedPassword);
+		}
+
 		return null;
 	}
 }
