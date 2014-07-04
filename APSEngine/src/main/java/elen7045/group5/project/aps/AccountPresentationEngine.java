@@ -31,34 +31,34 @@ public class AccountPresentationEngine
 	@Autowired
 	private BillingCompanyService	billingCompanySrvc;
 	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args)
-	{
-		AbstractApplicationContext context = null;
-
-		try
-		{
-			context = new AnnotationConfigApplicationContext(
-					ApplicationContext.class);
-
-			AccountPresentationEngine accountPresentationEngine = context
-					.getBean(AccountPresentationEngine.class);
-			accountPresentationEngine.startApplication();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			System.exit(-1);
-		}
-		finally
-		{
-			((AbstractApplicationContext) context).close();
-		}
-
-		System.exit(0);
-	}
+//	/**
+//	 * @param args
+//	 */
+//	public static void main(String[] args)
+//	{
+//		AbstractApplicationContext context = null;
+//
+//		try
+//		{
+//			context = new AnnotationConfigApplicationContext(
+//					ApplicationContext.class);
+//
+//			AccountPresentationEngine accountPresentationEngine = context
+//					.getBean(AccountPresentationEngine.class);
+//			accountPresentationEngine.startApplication();
+//		}
+//		catch (Exception e)
+//		{
+//			e.printStackTrace();
+//			System.exit(-1);
+//		}
+//		finally
+//		{
+//			((AbstractApplicationContext) context).close();
+//		}
+//
+//		System.exit(0);
+//	}
 
 	/**
 	 * Method retrieves the billing companies and instantiates a
