@@ -12,3 +12,9 @@ This is a Group 5 Project for ELEN7045 by team members:
 * Sanjay
 
 -------------------
+
+Notes:
+Database script : Scripts/Dump20140623.sql
+
+To Run Engine:
+elen7045.group5.project.aps.Run
