@@ -1,13 +1,13 @@
 package elen7045.group5.project.scrapedata.audit.service;
 
-import elen7045.group5.project.aps.jpa.model.ScrapeData;
 import elen7045.group5.project.aps.jpa.service.ScrapeDataService;
+import elen7045.group5.project.wsa.ScrapeSession;
 
 public class ScrapeDataAudit{
 	
 	private ScrapeDataService  scrapeDataService;
-	private ScrapeData scrapeData;
-	public ScrapeDataAudit( ScrapeData scrapeData)
+	private ScrapeSession scrapeData;
+	public ScrapeDataAudit( ScrapeSession scrapeData)
 	{
 		this.scrapeData = scrapeData;
 	}

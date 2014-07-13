@@ -1,7 +1,10 @@
 package elen7045.group5.project.aps.jpa.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -21,6 +24,12 @@ public class BillingCompany implements Serializable
 
 	@Column(name = "billing_company_name")
 	private String					billingCompanyName;
+
+	@Column(name = "statement_provider_id")
+	private EStatementProvider		providerType;
+
+	@Column(name = "current_statement_date")
+	private Date					statementDate;
 
 	@Column(name = "days_per_cycle")
 	private int						daysPerCycle;
@@ -43,6 +52,10 @@ public class BillingCompany implements Serializable
 	// bi-directional many-to-one association to MaintenanceWindow
 	@OneToMany(mappedBy = "billingCompany")
 	private List<MaintenanceWindow>	maintenanceWindows;
+	
+	// bi-directional many-to-one association to PeakPeriods
+	@OneToMany(mappedBy = "billingCompany")
+	private List<PeakPeriod>	peakPeriods;
 
 	public BillingCompany()
 	{
@@ -66,6 +79,26 @@ public class BillingCompany implements Serializable
 	public void setBillingCompanyName(String billingCompanyName)
 	{
 		this.billingCompanyName = billingCompanyName;
+	}
+	
+	public EStatementProvider getProviderType()
+	{
+		return providerType;
+	}
+
+	public void setProviderType(EStatementProvider providerType)
+	{
+		this.providerType = providerType;
+	}
+	
+	public Date getStatementDate()
+	{
+		return statementDate;
+	}
+
+	public void setStatementDate(Date statementDate)
+	{
+		this.statementDate = statementDate;
 	}
 
 	public int getDaysPerCycle()
@@ -152,6 +185,16 @@ public class BillingCompany implements Serializable
 	public void setMaintenanceWindows(List<MaintenanceWindow> maintenanceWindows)
 	{
 		this.maintenanceWindows = maintenanceWindows;
+	}
+	
+	public List<PeakPeriod> getPeakPeriods()
+	{
+		return this.peakPeriods;
+	}
+
+	public void setPeakPeriods(List<PeakPeriod> periods)
+	{
+		this.peakPeriods = periods;
 	}
 
 	public MaintenanceWindow addMaintenanceWindow(MaintenanceWindow maintenanceWindow)

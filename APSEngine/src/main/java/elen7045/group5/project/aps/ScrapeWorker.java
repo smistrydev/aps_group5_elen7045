@@ -1,35 +1,32 @@
 package elen7045.group5.project.aps;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.bind.JAXBException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import elen7045.group5.project.aps.jpa.model.Account;
 import elen7045.group5.project.aps.jpa.model.BillingCompany;
-import elen7045.group5.project.aps.jpa.model.MaintenanceWindow;
-import elen7045.group5.project.aps.jpa.model.ScrapeData;
-import elen7045.group5.project.aps.jpa.service.ScrapeDataService;
-import elen7045.group5.project.wsa.ScrapeSession;
-import elen7045.group5.project.wsa.ScrapeSessionXMLUtil;
-import elen7045.group5.project.wsa.WebsiteScraperGateway;
+import elen7045.group5.project.aps.service.LoadManager;
+import elen7045.group5.project.aps.service.Scheduler;
 
 /**
- * Worker is responsible for checking if a schedule time has been reached and if
- * so then it will kick off a scrape session for all accounts linked to the
- * billing company
+ * Worker is responsible for checking if a scheduled time has been reached and if
+ * so then it will kick off a number of {@link ScrapeCustomerWorker} threads to perform
+ * the scrape session for all customer accounts linked to the billing company. The size
+ * of this pool is dictated by the 
  */
+@Component
 public class ScrapeWorker implements Runnable
 {
 	private BillingCompany				billingCompany;
 	private AccountPresentationEngine	parentEngine;
-	private WebsiteScraperGateway		gateway;
 	private Logger						logger	= LoggerFactory.getLogger("APS");
-	@Autowired
-	private ScrapeDataService			scrapeSrvc;
+	private Scheduler					scheduler;
+	private LoadManager					loadManager;
+	private List<Account> 				accountPool;
 
 	/**
 	 * Worker created for a specific company
@@ -41,6 +38,9 @@ public class ScrapeWorker implements Runnable
 	{
 		this.billingCompany = bc;
 		this.parentEngine = engine;
+		this.scheduler = new Scheduler();
+		this.loadManager = new LoadManager();
+		this.accountPool = new ArrayList<Account>();
 	}
 
 	/**
@@ -49,63 +49,80 @@ public class ScrapeWorker implements Runnable
 	@Override
 	public void run()
 	{
-		gateway = new WebsiteScraperGateway();
 		while (true)
 		{
+			Thread t = null;
+			ScrapeCustomerWorker custWorkerThread = null;
 			logger.info("ScrapeWorker is running....");
-			if (noConflictWithMaintenance()) // need to include a load balancing
-												// check to throttle scrapes
+			if (scheduler.isScrapeAllowed(billingCompany))
 			{
-				ScrapeSession scrapeData = null;
-				String resultXml = null;
-				List<Account> accountList = this.billingCompany.getAccounts();
-				for (Account custAcc : accountList)
+				//set account pool for this iteration
+				accountPool = this.billingCompany.getAccounts();
+				int threadCnt = loadManager.getMaximumConcurrentUsers(billingCompany);
+				if(threadCnt != 0)
 				{
-					try
+					if(threadCnt > accountPool.size())
 					{
-						resultXml = gateway.performScrape(this.billingCompany, custAcc);
-						scrapeData = ScrapeSessionXMLUtil.fromXML(resultXml);
+						threadCnt = accountPool.size(); //don't create unnecessary threads
 					}
-					catch (JAXBException jbe)
+					
+					for(int r = 0; r < threadCnt; r++)
 					{
-						logger.error("Error trying to parse scraped XML: " + jbe.getMessage());
-						ScrapeData sd = new ScrapeData();
-						
-						scrapeSrvc.create(sd);
+						custWorkerThread = new ScrapeCustomerWorker(this, billingCompany.getUrl(), billingCompany.getProviderType(), 
+																		billingCompany.getRetryCount(), billingCompany.getRetryIntervalMinutes());
+						t = new Thread(custWorkerThread);
+						t.start();
 					}
-				}
+				}			
 			}
-
-			logger.info("go through each one and perform a scrape - perhaps this should also be threaded");
-			// String result = gateway.performScrape(null);
-
-			logger.info("parse the returned result into objects via JaxB");
-
-			// validate the info
-
-			// persist the data, persistence object should do the audit as well
-
+			
 			try
 			{
-				Thread.sleep(10000);
+				Thread.sleep(30 * 60 * 1000); //sleep for 30 mins, perhaps this should be configurable?
 			}
 			catch (InterruptedException ie)
 			{
 			}
 
+			//TODO: this is to be removed, want to test the iteration
 			parentEngine.shutdown();
+		}
+	}
+	
+	/**
+	 * This method will return one account from within the remaining pool of
+	 * accounts
+	 * @return Returns an available account, null if no more are available
+	 */
+	public synchronized Account getAccountFromPool()
+	{
+		if(accountPool.size() >= 1)
+		{
+			return accountPool.remove(0);
+		}
+		else
+		{
+			return null;
 		}
 	}
 
 	/**
-	 * Method is responsible for validating if we are within a maintenance
-	 * period for the billing company we are going to scrape.
-	 * 
-	 * @return Returns true if there are no conflicts, false otherwise.
+	 * This method will add the account back to the pool. This will be called
+	 * by the {@link ScrapeCustomerWorker} thread if there was a problem with
+	 * performing the scrape
+	 * @param accountPool
 	 */
-	private boolean noConflictWithMaintenance()
+	public synchronized void setAccountPool(List<Account> accountPool)
 	{
-		List<MaintenanceWindow> maintWindowList = billingCompany.getMaintenanceWindows();
-		return true;// TODO: implement
+		this.accountPool = accountPool;
+	}
+	
+	/**
+	 * This method allows the caller to set a new list of billing accounts
+	 * @param newList
+	 */
+	public synchronized void setBillingCompanyAccounts(List<Account> newList)
+	{
+		this.billingCompany.setAccounts(newList);
 	}
 }

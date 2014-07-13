@@ -1,9 +1,12 @@
 package elen7045.group5.project.aps.service;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.List;
 
 import elen7045.group5.project.InvalidDataException;
+import elen7045.group5.project.aps.jpa.model.BillingCompany;
 import elen7045.group5.project.aps.jpa.model.MaintenanceWindow;
 
 
@@ -47,6 +50,52 @@ public class Scheduler
 	private final String TYPE_MONTH = "MONTHS";
 	private final String TYPE_DOM = "DAYS_OF_MONTH";
 	private final String TYPE_DOW = "DAYS_OF_WEEK";
+	
+	/**
+	 * This method will determine if a scrape operation is allowed based on scheduling and
+	 * the statement cycles of various Billing Companies.
+	 * @param bc - Billing Company whose cycles need to be checked
+	 * @return Returns true if a scrape is allowed, false otherwise
+	 */
+	public boolean isScrapeAllowed(BillingCompany bc)
+	{
+		boolean scrape = false;
+		GregorianCalendar now = new GregorianCalendar();
+		long nextStatementDt = bc.getStatementDate().getTime() + getMilliSecondsForDays(bc.getDaysPerCycle()) 
+									- getMilliSecondsForDays(bc.getLeadTimeDays());
+		
+		if(nextStatementDt >= now.getTimeInMillis())  
+		{
+			if(isScheduledTimeReached(bc.getMaintenanceWindows()) == false)
+			{
+				scrape = true;
+			}
+		}
+		
+		return scrape;
+	}
+	
+	
+	/**
+	 * Method would check if a schedule is reached across a number of maintenance windows
+	 * @param schedList - List of MaintenanceWindows to check
+	 * @return Returns true if any one of the windows in the passed object has reached its
+	 * schedule, false otherwise
+	 */
+	public boolean isScheduledTimeReached(List<MaintenanceWindow> schedList)
+	{
+		boolean isReached = false;
+		for(MaintenanceWindow mw : schedList)
+		{
+			if(isScheduledTimeReached(mw))
+			{
+				isReached = true;
+				break;
+			}
+		}
+		
+		return isReached;		
+	}
 	
 	/**
 	 * This method checks if the data contained in the passed bean equates to the
@@ -232,6 +281,18 @@ public class Scheduler
 														+ val + ", Field="
 														+ typeCheck); 
 		}
+	}
+	
+	/**
+	 * Calculates how many milliseconds are in the number of days
+	 * passed
+	 * @param days - Number of days
+	 * @return Returns how many milliseconds are in the number of days
+	 * passed
+	 */
+	private long getMilliSecondsForDays(int days)
+	{
+		return days * 24 * 3600 * 1000;
 	}
 	
 	/**

@@ -1,5 +1,7 @@
 package elen7045.group5.project.aps.validation;
 
+import elen7045.group5.project.aps.jpa.model.EStatementProvider;
+
 /**
  * Factory will create a validator based on the type of statement scraped.
  */
@@ -10,24 +12,23 @@ public class ValidatorFactory
 	 * @param model
 	 * @return
 	 */
-	public static Validator ValidatorBuilder(EValidatorTypes model)
+	public static Validator getValidator(EStatementProvider providerType)
 	{
 		Validator validator = null;
-		switch (model)
+		switch (providerType)
 		{
-		case CreditCard:
+		case CREDIT_CARD:
 			validator = new CreditCardValidator();
 			break;
-		case Municiple:
+		case MUNICIPAL:
 			validator = new MunicipleValidator();
 			break;
-		case Telco:
+		case TELCO:
 			validator = new TelcoValidator();
 		default:
 			// throw an exeption
 			break;
 		}
 		return validator;
-
 	}
 }

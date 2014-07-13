@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import elen7045.group5.project.aps.config.APSAuditLog;
 import elen7045.group5.project.aps.encrypt.service.SecureAPSEncryptor;
 import elen7045.group5.project.aps.jpa.model.Account;
-import elen7045.group5.project.aps.jpa.model.BillingCompany;
 
 /**
  * This is used as an abstraction to a third party website scraper. This allows
@@ -27,16 +26,17 @@ public class WebsiteScraperGateway
 	 * in the passed bean using the customer's details and retrieve the
 	 * statement information
 	 * 
-	 * @param billingAcc
-	 *            - Bean containing all the required data to perform a scrape
+	 * @param companyURL
+	 *            - URL of the company to connect to and scrape
+	 * @param customerAcc
+	 * 			- Account details to use when logging onto the company's site
 	 * @return Returns the XML string containing the scraped data or any errors
 	 *         encountered
 	 */
 	@APSAuditLog
-	public String performScrape(BillingCompany billingCompany, Account customerAcc)
+	public String performScrape(String companyURL, Account customerAcc)
 	{
 		InputStream is = null;
-		String companyURL = billingCompany.getUrl();
 		logger.info("Scrape called for company " + companyURL);
 
 		// The password is decrypted here.
